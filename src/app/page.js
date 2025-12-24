@@ -39,20 +39,14 @@ export default function Home() {
         <div className="lg:relative lg:h-screen w-full md:w-full lg:px-20">
           <div className="lg:relative w-full lg:w-full mx-auto h-full text-white flex flex-col lg:flex-row lg:h-3/4 lg:mt-6">
             <div className="flex flex-col gap-4 relative lg:absolute lg:left-0 lg:top-0 bg-[#3871F2] w-full lg:h-full lg:[clip-path:polygon(70%_0,60%_70%,60%_100%,0_100%,0_0)] lg:z-10 ">
-              <div className="flex flex-col lg:flex-row justify-center ml-4 lg:ml-12 gap-2 lg:gap-4 lg:w-1/2 mt-6 md:px-4 lg:mt-8">
-                <Image
-                  src="/hp-icon.png"
-                  alt="logo"
-                  width={100}
-                  height={100}
-                  className="lg:h-25 lg:w-25 md:h-30 md:w-30 border-amber-50 shrink-0"
-                ></Image>
+              <div className="flex flex-col lg:flex-row justify-center ml-4 gap-2 lg:gap-4 lg:w-1/2 mt-6 md:px-4 lg:mt-8">
+                
                 <div className="flex flex-col justify-center md:mt-3">
                   <h1 className="text-3xl px-2 md:text-4xl lg:text-4xl font-semibold">
                     Exclusive Printer Support
                   </h1>
                   <p className="text-lg px-2 md:text-xl lg:text-lg font-extralight pt-4 lg:pt-2">
-                    Call now to speak directly with a live HP+ support expert.
+                    Call now to speak directly with an expert.
                   </p>
                 </div>
               </div>
@@ -84,7 +78,7 @@ export default function Home() {
                 </li>
                 <li>
                   Our priority is to take care of you. Call us to resolve
-                  questions about HP+ and receive assistance with printer setup.
+                  questions about your printer and receive assistance with printer setup.
                 </li>
               </ul>
               <div className="flex flex-col mx-2 lg:mx-8">
@@ -158,7 +152,7 @@ export default function Home() {
                 </li>
                 <li>
                   Our priority is to take care of you. Call us to resolve
-                  questions about HP+ and receive assistance with printer setup.
+                  questions about your printer and receive assistance with printer setup.
                 </li>
               </ul>
               <div className="flex flex-col md:mx-8">

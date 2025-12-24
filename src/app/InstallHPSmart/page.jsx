@@ -32,7 +32,7 @@ function InstallHPSmart() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative h-auto flex flex-col">
       {showPopup && (
         <div className="fixed inset-0 bg-black/70 flex flex-col items-center justify-center z-50">
           <div className="bg-white rounded-xl p-8 shadow-xl flex flex-col items-center">
@@ -58,7 +58,7 @@ function InstallHPSmart() {
         </div>
       )}
 
-      <div className="lg:h-[360px] w-full bg-[#f7f7f7]">
+      <div className="h-auto w-full bg-[#f7f7f7]">
         <div className="h-full w-full flex flex-col lg:flex-row gap-4 lg:gap-0">
           <div className="lg:w-2/5 flex justify-center mt-5 lg:mt-0 ">
             <div className="flex flex-col items-center justify-center">
@@ -151,7 +151,7 @@ function InstallHPSmart() {
           </div>
         </div>
 
-        <div className="flex flex-col mt-14 items-center gap-6 h-auto lg:h-screen w-full px-4">
+        <div className="flex flex-col mt-14 items-center gap-6 h-auto w-full px-4">
           <h2 className="text-2xl lg:text-4xl text-[#080880] font-semibold pt-5">
             We provide solutions for
           </h2>
