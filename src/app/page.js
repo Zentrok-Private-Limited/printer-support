@@ -40,7 +40,6 @@ export default function Home() {
           <div className="lg:relative w-full lg:w-full mx-auto h-full text-white flex flex-col lg:flex-row lg:h-3/4 lg:mt-6">
             <div className="flex flex-col gap-4 relative lg:absolute lg:left-0 lg:top-0 bg-[#3871F2] w-full lg:h-full lg:[clip-path:polygon(70%_0,60%_70%,60%_100%,0_100%,0_0)] lg:z-10 ">
               <div className="flex flex-col lg:flex-row justify-center ml-4 gap-2 lg:gap-4 lg:w-1/2 mt-6 md:px-4 lg:mt-8">
-                
                 <div className="flex flex-col justify-center md:mt-3">
                   <h1 className="text-3xl px-2 md:text-4xl lg:text-4xl font-semibold">
                     Exclusive Printer Support
@@ -78,21 +77,19 @@ export default function Home() {
                 </li>
                 <li>
                   Our priority is to take care of you. Call us to resolve
-                  questions about your printer and receive assistance with printer setup.
+                  questions about your printer and receive assistance with
+                  printer setup.
                 </li>
               </ul>
-              <div className="flex flex-col mx-2 lg:mx-8">
-                <div className="px-2 w-[87%]">
-                  <Link className="w-4/5" href="/PrinterSetup">
-                    <button className="flex items-center gap-2 text-xs lg:text-lg font-light bg-black/80 text-white px-5 py-2 rounded-full hover:cursor-pointer hover:bg-[#080880] hover:text-white mt-1 lg:mt-4">
-                      Printer Setup
-                      <span className="text-xs lg:text-sm">
-                        <SlArrowRight />
-                      </span>
-                    </button>
-                  </Link>
-                </div>
-              </div>
+              <Link
+                href="/PrinterSetup"
+                className="border inline-flex items-center gap-2 text-xs lg:text-lg font-light bg-black/80 text-white px-5 py-2 ml-10 rounded-full hover:bg-[#080880] mt-1 lg:mt-4 w-1/4"
+              >
+                Printer Setup
+                <span className="text-xs lg:text-sm">
+                  <SlArrowRight />
+                </span>
+              </Link>
             </div>
           </div>
 
@@ -145,29 +142,29 @@ export default function Home() {
         </div>
 
         <div className="lg:hidden md:flex mt-5 md:mt-8 py-2 px-5 flex flex-col justify-center">
-              <ul className="flex flex-col gap-1 md:gap-2 px-2 md:px-4 text-sm md:text-lg list-disc mx-2 md:mx-8">
-                <li>
-                  Experience Fast and Complimentary Support from Our Experts.
-                  We&apos;re here to help!
-                </li>
-                <li>
-                  Our priority is to take care of you. Call us to resolve
-                  questions about your printer and receive assistance with printer setup.
-                </li>
-              </ul>
-              <div className="flex flex-col md:mx-8">
-                <div className="px-2 w-[87%]">
-                  <Link className="w-4/5" href="/PrinterSetup">
-                    <button className="mx-2 flex items-center gap-2 text-sm md:text-lg font-light bg-black/80 text-white md:px-5 px-3 py-2 rounded-full hover:cursor-pointer hover:bg-[#080880] hover:text-white md:mt-7 mt-4">
-                      Printer Setup
-                      <span className="text-xs lg:text-sm">
-                        <SlArrowRight />
-                      </span>
-                    </button>
-                  </Link>
-                </div>
-              </div>
+          <ul className="flex flex-col gap-1 md:gap-2 px-2 md:px-4 text-sm md:text-lg list-disc mx-2 md:mx-8">
+            <li>
+              Experience Fast and Complimentary Support from Our Experts.
+              We&apos;re here to help!
+            </li>
+            <li>
+              Our priority is to take care of you. Call us to resolve questions
+              about your printer and receive assistance with printer setup.
+            </li>
+          </ul>
+          <div className="flex flex-col md:mx-8">
+            <div className="px-2 w-[87%]">
+              <Link className="w-4/5" href="/PrinterSetup">
+                <button className="mx-2 flex items-center gap-2 text-sm md:text-lg font-light bg-black/80 text-white md:px-5 px-3 py-2 rounded-full hover:cursor-pointer hover:bg-[#080880] hover:text-white md:mt-7 mt-4">
+                  Printer Setup
+                  <span className="text-xs lg:text-sm">
+                    <SlArrowRight />
+                  </span>
+                </button>
+              </Link>
             </div>
+          </div>
+        </div>
 
         <div className="flex flex-col gap-6 h-screen w-full md:mt-5">
           <h3 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-[#080880] text-center pt-10">
@@ -211,7 +208,6 @@ export default function Home() {
             </div>
           </div>
           <div className="flex md:flex lg:hidden justify-center items-center md:h-[15%] h-1/5 w-full mb-3 px-2 py-4 bg-blue-100">
-
             <div className="w-1/4 h-full p-2 flex flex-col justify-center items-center gap-1 hover:cursor-pointer">
               <VscDesktopDownload className="md:h-3/5 h-2/5 w-full text-2xl text-[#080880]" />
               <a
@@ -234,7 +230,6 @@ export default function Home() {
               >
                 Check Warranty
               </a>
-                
             </div>
 
             <div className="w-1/4 h-full p-2 flex flex-col items-center hover:-translate-y-1 transition-all ease-in-out hover:cursor-pointer">
@@ -289,12 +284,11 @@ export default function Home() {
                 working properly due to an error then connect to one of our
                 technicians at customer service number.
               </p>
-              <Link  href="/InstallHPSmart">
+              <Link href="/InstallHPSmart">
                 <button className="flex items-center gap-2 text-base font-light bg-black/80 text-white px-6 py-2 rounded-full hover:cursor-pointer hover:bg-[#080880] hover:text-white mt-6 lg:mt-2">
                   Install HP Smart
                 </button>
               </Link>
-              
             </div>
             <div className="flex flex-col items-center h-[90%] px-4 py-2">
               <Image
@@ -399,7 +393,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          
+
           <div className="absolute bottom-0 md:bottom-6 lg:bottom-3 h-15 w-4/5 md:h-30 lg:h-1/4 lg:w-3/5 overflow-hidden flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.div

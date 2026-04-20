@@ -3,10 +3,13 @@ import React from "react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 function PrinterSetup() {
   const images = ["/NSLaser.avif", "/Envy.avif", "/Deskjet.avif"];
   const [index, setIndex] = useState(0);
+  const [printerInput, setPrinterInput] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -20,14 +23,14 @@ function PrinterSetup() {
     <div className="h-screen w-full">
       <div className="mt-8 lg:mt-14 mx-10 lg:mx-14 flex flex-col lg:flex-row gap-4">
         <div className="flex flex-col gap-3 px-4 py-2 lg:w-3/5 text-base font-light">
-            <h2 className="text-2xl lg:text-4xl font-extrabold">
-                We're here to help you set up your HP printer
-            </h2>
-            <p className="text-sm lg:text-lg font-light">
-                Let's connect your printer to a Wi-Fi or wired network or to a computer using a USB cable, but first, we need to know your printer model.
-            </p>
-          
-            
+          <h2 className="text-2xl lg:text-4xl font-extrabold">
+            We're here to help you set up your HP printer
+          </h2>
+          <p className="text-sm lg:text-lg font-light">
+            Let's connect your printer to a Wi-Fi or wired network or to a
+            computer using a USB cable, but first, we need to know your printer
+            model.
+          </p>
         </div>
         <div className="lg:w-2/5">
           <Image
@@ -43,17 +46,15 @@ function PrinterSetup() {
       <div className="flex flex-col mt-8 lg:mt-0 lg:flex-row pt-6 lg:pt-5 px-4 lg:h-2/3 bg-[#F7F7F7]">
         <div className="flex flex-col items-center justify-center w-full h-1/2 lg:w-1/2 lg:h-full ">
           <form className="w-3/4 text-base" action="">
-
             <div className="flex gap-2">
-                <input type="checkbox" id="setup" />
-                <label htmlFor="setup">Unpack, Setup New Printer</label>
+              <input type="checkbox" id="setup" />
+              <label htmlFor="setup">Unpack, Setup New Printer</label>
             </div>
 
             <div className="flex gap-2">
-                <input type="checkbox" id="troubleshoot" />
-                <label htmlFor="troubleshoot">Trouleshoot Printer Issues</label>
+              <input type="checkbox" id="troubleshoot" />
+              <label htmlFor="troubleshoot">Trouleshoot Printer Issues</label>
             </div>
-
           </form>
           <div className="px-8 lg:px-0">
             <p className="text-base lg:text-lg mt-3 mb-2 pt-4">
@@ -63,19 +64,29 @@ function PrinterSetup() {
               <form action="">
                 <input
                   type="text"
+                  value={printerInput}
+                  onChange={(e) => setPrinterInput(e.target.value)}
                   placeholder="Example: HP DeskJet 2632 All-in-One printer"
                   className="h-12 w-[90%] border-1 rounded-full px-4 py-2 border-black/20 outline-[#4343d8]"
-                ></input>
+                />
               </form>
             </div>
-            <a href="/InstallHPSmart">
-              <button
-                type="submit"
-                className="flex items-center gap-2 text-base font-light bg-black/80 text-white px-6 py-2 rounded-full hover:cursor-pointer hover:bg-[#080880] hover:text-white mt-6 lg:mt-4"
-              >
-                Submit
-              </button>
-            </a>
+            <button
+              type="submit"
+              disabled={!printerInput.trim()}
+              onClick={() => {
+                if (!printerInput.trim()) return;
+                router.push("/InstallHPSmart");
+              }}
+              className={`flex items-center gap-2 text-base font-light px-6 py-2 rounded-full mt-6 lg:mt-4
+              ${
+                printerInput.trim()
+                  ? "bg-black/80 text-white hover:bg-[#080880]"
+                  : "bg-gray-400 text-gray-200 cursor-not-allowed"
+              }`}
+            >
+              Submit
+            </button>
           </div>
         </div>
         <div className="flex gap-2 items-center w-full h-2/5 lg:w-1/2 lg:h-full">
