@@ -74,7 +74,10 @@ const PrivacyPolicy = () => {
                   <h2 className="text-2xl font-bold text-slate-900">Introduction</h2>
                 </div>
                 <p className="text-slate-600 leading-relaxed">
-                  This Privacy Policy explains how we collect, use, disclose, and protect your information when you visit our website and use our printer support and technical assistance services. By using our website, you agree to this policy.
+                  At printerdriverssupport.com (“we”, “our”, “us”), we value your privacy and are committed to protecting your personal data. This Privacy Policy outlines how we collect, use, store, and share your information when you visit our website printerdriverssupport.com (“Website”) or purchase products from us.
+                  <br />
+                  <br />
+                  This Policy complies with the Information Technology Act, 2000, and the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011.
                 </p>
               </section>
 
@@ -88,11 +91,25 @@ const PrivacyPolicy = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                   <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
                     <span className="block font-bold text-slate-900 mb-1">Personal Info</span>
-                    <p className="text-slate-500">Name, email, phone, and billing details for service processing.</p>
+                    <ul className="text-slate-500 list-disc list-inside">
+                      <li>Full Name</li>
+                      <li>Email Address</li>
+                      <li>Phone Number</li>
+                      <li>Billing and Shipping Address</li>
+                      <li>Payment Information (processed securely via third-party payment gateways)</li>
+                      <li>GST Number (if applicable)</li>
+                      <li>Purchase History</li>
+                    </ul>
                   </div>
                   <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                    <span className="block font-bold text-slate-900 mb-1">Technical Data</span>
-                    <p className="text-slate-500">IP address, browser type, and device details for diagnostics.</p>
+                    <span className="block font-bold text-slate-900 mb-1">Non-Personal Information</span>
+                    <ul className="text-slate-500 list-disc list-inside">
+                      <li>IP Address</li>
+                      <li>Browser Type</li>
+                      <li>Device Information</li>
+                      <li>Cookies and Usage Data</li>
+                      <li>Location Data (with your permission)</li>
+                    </ul>
                   </div>
                 </div>
               </section>
@@ -103,9 +120,14 @@ const PrivacyPolicy = () => {
                   <div className="p-2 bg-cyan-100 rounded-lg text-cyan-600"><Database size={22}/></div>
                   <h2 className="text-2xl font-bold text-slate-900">Use of Information</h2>
                 </div>
-                <p className="text-slate-600 leading-relaxed">
-                  Information is used to provide technical support, respond to inquiries, process payments, improve services, enhance website performance, and maintain security.
-                </p>
+                <p className="block font-bold text-slate-900 mb-1">We use your information for:</p>
+                <ul className="text-slate-500 list-disc list-inside">
+                      <li>Process and deliver your orders</li>
+                      <li>Communicate with you regarding purchases, offers, or support</li>
+                      <li>Improve our Website, products, and services</li>
+                      <li>Comply with legal obligations</li>
+                      <li>Prevent fraud and abuse</li>
+                    </ul>
               </section>
 
               {/* Cookies Policy */}
@@ -114,32 +136,31 @@ const PrivacyPolicy = () => {
                   <div className="p-2 bg-purple-100 rounded-lg text-purple-600"><Cookie size={22}/></div>
                   <h2 className="text-2xl font-bold text-slate-900">Cookies Policy</h2>
                 </div>
-                <p className="text-slate-600 leading-relaxed">
-                  Our website uses cookies to improve functionality, remember preferences, analyze traffic, and optimize advertising performance. Users may disable cookies through browser settings.
-                </p>
+                <p className="block font-bold text-slate-700 mb-1">We use cookies and similar technologies to:</p>
+                <ul className="text-slate-500 list-disc list-inside">
+                      <li>Improve your browsing experience</li>
+                      <li>Remember your preferences</li>
+                      <li>Analyze traffic and performance</li>
+                    </ul>
+                <p className="block font-bold text-slate-700 mb-1 mt-2">You can manage cookie preferences through your browser settings.</p>
               </section>
 
               {/* Third Party Services */}
               <section>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-2 bg-rose-100 rounded-lg text-rose-600"><ExternalLink size={22}/></div>
-                  <h2 className="text-2xl font-bold text-slate-900">Third Party Services</h2>
+                  <h2 className="text-2xl font-bold text-slate-900">Sharing of Information</h2>
                 </div>
-                <p className="text-slate-600 leading-relaxed">
-                  We may use trusted third party providers including analytics tools, payment processors, and customer support platforms. These providers access information only as required to perform services.
-                </p>
+                <p className="block font-bold text-slate-700 mb-1">We do not sell or rent your personal data. We may share information with:</p>
+                <ul className="text-slate-500 list-disc list-inside">
+                      <li>Logistics and delivery partners</li>
+                      <li>Payment gateways and financial institutions</li>
+                      <li>Customer support service providers</li>
+                      <li>Government authorities when required by law</li>
+                    </ul>
+                <p className="block font-bold text-slate-700 mb-1 mt-2">All third parties are bound by confidentiality and data protection agreements.</p>
               </section>
 
-              {/* Independent Service Provider Notice */}
-              <section>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 bg-amber-100 rounded-lg text-amber-600"><Eye size={22}/></div>
-                  <h2 className="text-2xl font-bold text-slate-900">Independent Provider Notice</h2>
-                </div>
-                <p className="text-slate-600 leading-relaxed">
-                  We are an independent third party technical support provider and are not affiliated with printer brands unless explicitly stated. Brand names are used only for identification purposes.
-                </p>
-              </section>
 
               {/* Data Security */}
               <section>
@@ -147,9 +168,14 @@ const PrivacyPolicy = () => {
                   <div className="p-2 bg-emerald-100 rounded-lg text-emerald-600"><Lock size={22}/></div>
                   <h2 className="text-2xl font-bold text-slate-900">Data Security</h2>
                 </div>
-                <p className="text-slate-600 leading-relaxed">
-                  We implement reasonable security measures to protect user data; however, no online transmission is completely secure.
-                </p>
+                <p className="block font-bold text-slate-700 mb-1">We follow industry-standard security practices to protect your data. These include:</p>
+                <ul className="text-slate-500 list-disc list-inside">
+                      <li>SSL encryption</li>
+                      <li>Secure server infrastructure</li>
+                      <li>Role-based access controls</li>
+                      <li>Regular audits and monitoring</li>
+                    </ul>
+                <p className="block font-bold text-slate-700 mb-1 mt-2">However, no online platform is 100% secure. We encourage you to use strong passwords and take appropriate measures to protect your own data.</p>
               </section>
 
               {/* User Rights */}
@@ -158,8 +184,43 @@ const PrivacyPolicy = () => {
                   <div className="p-2 bg-violet-100 rounded-lg text-violet-600"><Scale size={22}/></div>
                   <h2 className="text-2xl font-bold text-slate-900">User Rights</h2>
                 </div>
+                <p className="block font-bold text-slate-700 mb-1">As per Indian law, you have the right to:</p>
+                <ul className="text-slate-500 list-disc list-inside">
+                      <li>Review and correct your personal data</li>
+                      <li>Withdraw consent (subject to terms of service)</li>
+                      <li>Opt-out of marketing communications</li>
+                      <li>Request data deletion, unless retained for legal reasons</li>
+                    </ul>
+                <p className="block font-bold text-slate-700 mb-1 mt-2">To exercise these rights, contact us at info@printerdriverssupport.com.</p>
+              </section>
+
+              <section>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-blue-100 rounded-lg text-blue-600"><ShieldCheck size={22}/></div>
+                  <h2 className="text-2xl font-bold text-slate-900">Children’s Privacy</h2>
+                </div>
                 <p className="text-slate-600 leading-relaxed">
-                  Users may request access, correction, or deletion of personal information and may opt out of marketing communications.
+                  Our Website is not intended for children under 18. We do not knowingly collect personal data from minors.
+                </p>
+              </section>
+
+              <section>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-blue-100 rounded-lg text-blue-600"><ShieldCheck size={22}/></div>
+                  <h2 className="text-2xl font-bold text-slate-900">Third-Party Links</h2>
+                </div>
+                <p className="text-slate-600 leading-relaxed">
+                  Our Website may contain links to third-party websites. We are not responsible for the privacy practices or content of those sites.
+                </p>
+              </section>
+
+              <section>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-blue-100 rounded-lg text-blue-600"><ShieldCheck size={22}/></div>
+                  <h2 className="text-2xl font-bold text-slate-900">Policy Updates</h2>
+                </div>
+                <p className="text-slate-600 leading-relaxed">
+                  We may update this Privacy Policy from time to time. Any changes will be posted on this page with the revised date.
                 </p>
               </section>
 
@@ -172,10 +233,14 @@ const PrivacyPolicy = () => {
                 <p className="text-slate-600 mb-6">
                   For privacy-related inquiries, users may contact the company via website contact details.
                 </p>
-                {/* <button className="w-full sm:w-auto bg-slate-900 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-600 transition shadow-lg shadow-slate-200 active:scale-95">
-                  Contact Support Team
-                </button> */}
+                <button className="w-full sm:w-auto bg-slate-900 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-600 transition shadow-lg shadow-slate-200 active:scale-95">
+                  Live Chat Support
+                </button>
               </section>
+
+              <p className="text-slate-900 font-bold mb-6">
+                By using our Website, you consent to the terms of this Privacy Policy.
+              </p>
 
             </div>
           </div>

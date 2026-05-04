@@ -34,12 +34,12 @@ function Footer() {
     </div>
 
     <footer className="bg-gray-900 text-gray-300 text-sm">
-        <div className="max-w-5xl mx-auto py-10 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-12">
+        <div className="mx-6 md:mx-15 py-10 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-12">
           {/* Column 1 */}
           <div>
             <h2 className="text-white font-semibold mb-3">About Us</h2>
             <p className="leading-6 text-gray-400">
-              printerassistance.com provides setup and troubleshooting guides to
+              printerdriverssupport.com provides setup and troubleshooting guides to
               help users easily connect and configure their devices.
             </p>
           </div>
@@ -72,7 +72,7 @@ function Footer() {
           {/* Column 3 */}
           <div>
             <h2 className="text-white font-semibold mb-3">Legal</h2>
-            <ul>
+            <ul className="flex flex-col gap-1">
               <li>
                 <a
                   href="/PrivacyPolicy"
@@ -83,10 +83,18 @@ function Footer() {
               </li>
               <li>
                 <a
-                  href="/TermsCondition"
+                  href="/RefundReturnPolicy"
                   className="hover:text-white transition"
                 >
-                  Terms & Conditions
+                  Refund and Return Policy
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/TermsofUse"
+                  className="hover:text-white transition"
+                >
+                  Terms of Use
                 </a>
               </li>
               <li>
@@ -101,7 +109,7 @@ function Footer() {
           <div>
             <h2 className="text-white font-semibold mb-3">Contact</h2>
             <ul className="space-y-2 text-gray-400">
-              <li>E-mail: info.digismartexpert@gmail.com</li>
+              <li>E-mail: info.printerdriverssupport@gmail.com</li>
               <li>Phone: +91 788-746-8967</li>
             </ul>
             <div className="mt-4 flex space-x-3">

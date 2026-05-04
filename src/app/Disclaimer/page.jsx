@@ -146,28 +146,10 @@ const Disclaimer = () => {
                 </ul>
               </section>
 
-              {/* Help Section */}
-              <section className="pt-8 border-t border-slate-100 text-center">
-                <div className="inline-flex items-center justify-center p-3 bg-orange-100 rounded-full text-orange-600 mb-4">
-                  <HelpCircle size={28}/>
-                </div>
-                <h2 className="text-2xl font-bold text-slate-900 mb-2">Need Clarity?</h2>
-                <p className="text-slate-600 mb-6">
-                  If you have questions about these disclosures, our support team is happy to explain our processes.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button className="bg-slate-900 text-white px-8 py-3 rounded-xl font-bold hover:bg-amber-600 transition shadow-lg shadow-slate-200">
-                    Contact Us
-                  </button>
-                </div>
-              </section>
-
             </div>
           </div>
         </div>
-        <p className="text-center mt-10 text-slate-400 text-sm italic">
-          Disclaimer ID: DS-PRINTER-2026 • &copy; Printer Support Team
-        </p>
+        
       </div>
     </div>
   );

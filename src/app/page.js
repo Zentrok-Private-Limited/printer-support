@@ -1,421 +1,162 @@
-"use client";
-import Image from "next/image";
-import { VscDesktopDownload } from "react-icons/vsc";
-import { GrDocumentTime } from "react-icons/gr";
-import { BiSupport } from "react-icons/bi";
-import { RiChatSmile2Fill } from "react-icons/ri";
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
-import { SlArrowRight } from "react-icons/sl";
-import Link from "next/link";
+import React from 'react';
+import { ShoppingCart, Search, User, Menu, Star, Heart } from 'lucide-react';
 
-export default function Home() {
-  const images = ["/NSLaser.avif", "/Envy.avif", "/Deskjet.avif"];
-  const slider = ["/slider-1.webp", "/slider-2.webp"];
-
-  const [index, setIndex] = useState(0);
-  const [sliderIndex, setSliderIndex] = useState(0);
-
-  // Auto-change index every 3s
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % images.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [images.length]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSliderIndex((prev) => (prev + 1) % slider.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [slider.length]);
+const LandingPage = () => {
+  const products = [
+    { id: 1, name: "Brother DCP-T226 All in One Printer", price: "12,190.00", oldPrice: "14,500.00", image: "https://via.placeholder.com/300x300?text=Printer+1" },
+    { id: 2, name: "Brother Dcp-T420W Printer", price: "14,999.00", oldPrice: "16,990.00", image: "https://via.placeholder.com/300x300?text=Printer+2" },
+    { id: 3, name: "Brother DCP-T426W All in One Printer", price: "15,250.00", oldPrice: "17,500.00", image: "https://via.placeholder.com/300x300?text=Printer+3" },
+    { id: 4, name: "Brother Dcp-T520W All-in One Printer", price: "17,490.00", oldPrice: "19,990.00", image: "https://via.placeholder.com/300x300?text=Printer+4" },
+    { id: 5, name: "Brother HL-L2321D Laser Printer", price: "10,890.00", oldPrice: "12,500.00", image: "https://via.placeholder.com/300x300?text=Printer+5" },
+    { id: 6, name: "Brother HL-L2440DW Compact Digital", price: "19,990.00", oldPrice: "22,500.00", image: "https://via.placeholder.com/300x300?text=Printer+6" },
+    { id: 7, name: "HP Laserjet Pro M126nw Multi-Function", price: "21,450.00", oldPrice: "24,000.00", image: "https://via.placeholder.com/300x300?text=Printer+7" },
+    { id: 8, name: "Canon PIXMA G3012 All-in-One", price: "13,999.00", oldPrice: "15,500.00", image: "https://via.placeholder.com/300x300?text=Printer+8" },
+  ];
 
   return (
-    <main>
-      <div className="h-auto w-full lg:w-full">
-        <div className="lg:relative lg:h-screen w-full md:w-full lg:px-20">
-          <div className="lg:relative w-full lg:w-full mx-auto h-full text-white flex flex-col lg:flex-row lg:h-3/4 lg:mt-6">
-            <div className="flex flex-col gap-4 relative lg:absolute lg:left-0 lg:top-0 bg-[#3871F2] w-full lg:h-full lg:[clip-path:polygon(70%_0,60%_70%,60%_100%,0_100%,0_0)] lg:z-10 ">
-              <div className="flex flex-col lg:flex-row justify-center ml-4 gap-2 lg:gap-4 lg:w-1/2 mt-6 md:px-4 lg:mt-8">
-                <div className="flex flex-col justify-center md:mt-3">
-                  <h1 className="text-3xl px-2 md:text-4xl lg:text-4xl font-semibold">
-                    Exclusive Printer Support
-                  </h1>
-                  <p className="text-lg px-2 md:text-xl lg:text-lg font-extralight pt-4 lg:pt-2">
-                    Call now to speak directly with an expert.
-                  </p>
-                </div>
-              </div>
-              <div className="md:flex flex mt-4 lg:mt-0 justify-center lg:hidden">
-                <Image
-                  src="/hero-image.webp"
-                  alt="logo"
-                  height={340}
-                  width={350}
-                  className="md:h-150 w-150"
-                ></Image>
-              </div>
-            </div>
-            <div className="hidden lg:flex lg:absolute lg:right-0 lg:top-0 w-2/5 lg:h-full">
-              <Image
-                className="object-cover -z-10"
-                src="/hero-image.webp"
-                alt="logo"
-                fill={true}
-              ></Image>
-            </div>
-          </div>
-          <div className="hidden lg:flex flex-col justify-center items-center md:absolute lg:absolute lg:bottom-45 lg:left-32 lg:w-[54%] lg:h-[34%] bg-white lg:z-50 rounded-lg">
-            <div className="py-2 lg:py-0 flex flex-col justify-center">
-              <ul className="flex flex-col gap-1 lg:gap-2 px-2 lg:px-4 text-[8px] text-xs lg:text-base list-disc mx-2 lg:mx-8">
-                <li>
-                  Experience Fast and Complimentary Support from Our Experts.
-                  We&apos;re here to help!
-                </li>
-                <li>
-                  Our priority is to take care of you. Call us to resolve
-                  questions about your printer and receive assistance with
-                  printer setup.
-                </li>
-              </ul>
-              <Link
-                href="/PrinterSetup"
-                className="border inline-flex items-center gap-2 text-xs lg:text-lg font-light bg-black/80 text-white px-5 py-2 ml-10 rounded-full hover:bg-[#080880] mt-1 lg:mt-4 w-1/4"
-              >
-                Printer Setup
-                <span className="text-xs lg:text-sm">
-                  <SlArrowRight />
-                </span>
-              </Link>
+    <div className="min-h-screen bg-[#f8f9fa] text-[#333]">
+      {/* Top Utility Bar */}
+      {/* <div className="bg-[#004aad] text-white text-[12px] py-2 px-4 text-center">
+        Free Shipping on all orders above ₹5000!
+      </div> */}
+
+      {/* Main Header */}
+      <header className="bg-white border-b sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
+          {/* Logo */}
+          <div className="flex items-center gap-3">
+            <Menu className="lg:hidden w-6 h-6 cursor-pointer" />
+            <div className="flex flex-col leading-tight">
+              <span className="text-2xl font-black text-[#004aad] tracking-tighter uppercase italic">Printer Drivers Support</span>
+              <span className="text-[10px] font-bold text-gray-500 tracking-widest uppercase ml-1">Pro Digital Services</span>
             </div>
           </div>
 
-          <div className="hidden lg:flex gap-16 flex-row justify-center items-center h-1/4 w-full rounded-t-2xl">
-            <div className="p-2 flex flex-col items-center gap-2 hover:-translate-y-1 transition-all ease-in-out hover:cursor-pointer">
-              <VscDesktopDownload className="text-5xl text-[#080880]" />
-              <a
-                href="/InstallHPSmart"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="py-1 text-base font-light hover:text-blue-400"
-              >
-                Download Drivers
-              </a>
+          {/* Search Bar */}
+          <div className="flex-1 max-w-xl hidden md:flex border rounded-md overflow-hidden bg-gray-50">
+            <input 
+              type="text" 
+              placeholder="Search for printers, ink, cartridges..." 
+              className="flex-grow px-4 py-2 outline-none bg-transparent text-sm"
+            />
+            <button className="bg-[#004aad] px-5 flex items-center justify-center text-white">
+              <Search className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Icons */}
+          <div className="flex items-center gap-6">
+            <div className="hidden lg:flex flex-col text-right">
+              <span className="text-[10px] text-gray-400 font-bold uppercase">Call Us Now</span>
+              <span className="text-sm font-bold text-[#004aad]">1-877-685-2233</span>
             </div>
-            <div className="p-2 flex flex-col items-center gap-2 hover:-translate-y-1 transition-all ease-in-out hover:cursor-pointer">
-              <GrDocumentTime className="text-5xl text-[#080880]" />
-              <a
-                href="/CheckWarranty"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="py-1 text-base font-light hover:text-blue-400"
-              >
-                Check Warranty Status
-              </a>
+            <div className="relative cursor-pointer group">
+              <User className="w-6 h-6 group-hover:text-[#004aad]" />
             </div>
-            <div className="p-2 flex flex-col items-center hover:-translate-y-1 transition-all ease-in-out hover:cursor-pointer">
-              <BiSupport className="text-6xl text-[#080880]" />
-              <a
-                href="/InstallHPSmart"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="py-1 text-base font-light hover:text-blue-400"
-              >
-                Contact Us
-              </a>
-            </div>
-            <div className="p-2 flex flex-col items-center hover:-translate-y-1 transition-all ease-in-out hover:cursor-pointer">
-              <RiChatSmile2Fill className="text-6xl text-[#080880]" />
-              <a
-                href="/InstallHPSmart"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="py-1 text-base font-light hover:text-blue-400"
-              >
-                Diagnose and Fix
-              </a>
+            <div className="relative cursor-pointer group">
+              <ShoppingCart className="w-6 h-6 group-hover:text-[#004aad]" />
+              <span className="absolute -top-2 -right-2 bg-[#ff4d4d] text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-bold">0</span>
             </div>
           </div>
         </div>
 
-        <div className="lg:hidden md:flex mt-5 md:mt-8 py-2 px-5 flex flex-col justify-center">
-          <ul className="flex flex-col gap-1 md:gap-2 px-2 md:px-4 text-sm md:text-lg list-disc mx-2 md:mx-8">
-            <li>
-              Experience Fast and Complimentary Support from Our Experts.
-              We&apos;re here to help!
-            </li>
-            <li>
-              Our priority is to take care of you. Call us to resolve questions
-              about your printer and receive assistance with printer setup.
-            </li>
-          </ul>
-          <div className="flex flex-col md:mx-8">
-            <div className="px-2 w-[87%]">
-              <Link className="w-4/5" href="/PrinterSetup">
-                <button className="mx-2 flex items-center gap-2 text-sm md:text-lg font-light bg-black/80 text-white md:px-5 px-3 py-2 rounded-full hover:cursor-pointer hover:bg-[#080880] hover:text-white md:mt-7 mt-4">
-                  Printer Setup
-                  <span className="text-xs lg:text-sm">
-                    <SlArrowRight />
-                  </span>
-                </button>
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-6 h-screen w-full md:mt-5">
-          <h3 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-[#080880] text-center pt-10">
-            How to set up your printer?
-          </h3>
-          <div className="flex flex-col lg:flex-row h-3/4 w-full">
-            <div className="flex justify-center items-center w-full h-1/2 lg:h-full lg:w-1/2">
-              <Image
-                className="rounded-2xl"
-                src="/Printer_feature.avif"
-                alt="printer"
-                height={400}
-                width={600}
-              ></Image>
-            </div>
-            <div className="flex flex-col lg:justify-center md:px-6 md:py-4 px-3 lg:px-0 lg:items-center h-1/2 w-full lg:h-full lg:w-1/2">
-              <div className="lg:h-1/2 h-[90%] w-full lg:mx-6 border-l-3 border-[#080880] px-6 py-2 my-3 lg:my-0">
-                <h3 className="text-base md:text-xl lg:text-xl font-light">
-                  Access Printer Setup to walk through the process of
-                  installation, configuration, and registration of your printer.
-                </h3>
-                <Link href="/PrinterSetup">
-                  <button className="flex items-center gap-1 lg:gap-2 text-sm md:text-lg lg:text-lg font-light bg-black/80 text-white px-3 md:px-6 lg:px-6 md:py-4 py-2 lg:py-2 rounded-full hover:cursor-pointer hover:bg-[#080880] hover:text-white md:mt-6 mt-4">
+        {/* Navigation Link Bar */}
+        <nav className="bg-white border-t hidden lg:block">
+          <div className="container mx-auto px-4">
+            <ul className="flex gap-10 text-[13px] font-bold uppercase tracking-wide py-3">
+              <li className="text-[#004aad] cursor-pointer">Home</li>
+              <li className="hover:text-[#004aad] cursor-pointer">Printers</li>
+              <li className="hover:text-[#004aad] cursor-pointer">
+                <a href="/Printer-setup">
                     Printer Setup
-                    <span className="text-sm">
-                      <SlArrowRight />
-                    </span>
-                  </button>
-                </Link>
-                <div className=" mt-2 md:mt-10 lg:mt-8">
-                  <p className="text-sm md:text-xl lg:text-xl font-medium">
-                    Want more Support?
-                  </p>
-                  <Link href="/PrinterSetup">
-                    <p className="text-sm md:text-base text-[#080880] underline">
-                      Get instant support here
-                    </p>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex md:flex lg:hidden justify-center items-center md:h-[15%] h-1/5 w-full mb-3 px-2 py-4 bg-blue-100">
-            <div className="w-1/4 h-full p-2 flex flex-col justify-center items-center gap-1 hover:cursor-pointer">
-              <VscDesktopDownload className="md:h-3/5 h-2/5 w-full text-2xl text-[#080880]" />
-              <a
-                href="/InstallHPSmart"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="md:h-2/5 h-3/5 py-1 px-2 text-base font-light hover:text-blue-400"
-              >
-                Download Drivers
-              </a>
-            </div>
-
-            <div className="p-2 w-1/4 h-full flex flex-col items-center gap-2 hover:-translate-y-1 transition-all ease-in-out hover:cursor-pointer">
-              <GrDocumentTime className="h-2/5 md:h-3/5 w-full text-2xl text-[#080880]" />
-              <a
-                href="/CheckWarranty"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-3/5 md:h-2/5 py-1 px-2 text-base font-light hover:text-blue-400"
-              >
-                Check Warranty
-              </a>
-            </div>
-
-            <div className="w-1/4 h-full p-2 flex flex-col items-center hover:-translate-y-1 transition-all ease-in-out hover:cursor-pointer">
-              <BiSupport className="h-2/5 md:h-3/5 w-full text-2xl text-[#080880]" />
-              <a
-                href="/InstallHPSmart"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-3/5 md:h-2/5 py-1 px-2 text-base font-light hover:text-blue-400"
-              >
-                Contact Us
-              </a>
-            </div>
-            <div className="w-1/4 h-full flex flex-col items-center hover:-translate-y-1 transition-all ease-in-out hover:cursor-pointer">
-              <RiChatSmile2Fill className="h-2/5 md:h-3/5 w-full text-xl text-[#080880]" />
-              <a
-                href="/InstallHPSmart"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-3/5 md:h-2/5 py-1 px-2 text-base font-light hover:text-blue-400"
-              >
-                Diagnose and Fix
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-col items-center gap-6 h-auto lg:h-screen w-full px-4 mt-10 lg:mt-0">
-          <h2 className="text-2xl  md:text-4xl lg:text-5xl text-[#080880] font-semibold pt-5">
-            We provide solutions for
-          </h2>
-
-          <div className="text-base md:text-xl lg:text-xl font-extralight">
-            Storage | Software Download | Installation Issues | Network
-            Connectivity Related Issues
-          </div>
-
-          <div className="flex flex-col lg:grid lg:grid-cols-3 items-center h-3/4 w-full lg:w-full mt-2 px-4 gap-6">
-            <div className="flex flex-col items-center h-[90%] px-4 py-2">
-              <Image
-                className="h-34"
-                src="/window-11.png"
-                height={200}
-                width={300}
-                alt="windows-11"
-              ></Image>
-              <h4 className=" text-2xl font-medium h-20 px-2">
-                Get Instant Support for Laptop & Desktop
-              </h4>
-              <p className="text-base font-extralight py-1 px-2 h-30">
-                If elite, premium, pavilions or any other HP desktop is not
-                working properly due to an error then connect to one of our
-                technicians at customer service number.
-              </p>
-              <Link href="/InstallHPSmart">
-                <button className="flex items-center gap-2 text-base font-light bg-black/80 text-white px-6 py-2 rounded-full hover:cursor-pointer hover:bg-[#080880] hover:text-white mt-6 lg:mt-2">
-                  Install HP Smart
-                </button>
-              </Link>
-            </div>
-            <div className="flex flex-col items-center h-[90%] px-4 py-2">
-              <Image
-                className="h-34"
-                src="/scan-print-fix.png"
-                height={250}
-                width={300}
-                alt="windows-11"
-              ></Image>
-              <h4 className="flex items-center text-2xl font-medium h-20 px-2">
-                How to print, scan and fax
-              </h4>
-              <p className="text-base font-extralight py-1 px-2 h-30">
-                Click Print Scan Fax for instructions on how to print, scan and
-                fax with your HP Printer using Windows or Mac OS.
-              </p>
-              <Link href="Troubleshoot">
-                <button className="flex items-center gap-2 text-base font-light bg-black/80 text-white px-6 py-2 rounded-full hover:cursor-pointer hover:bg-[#080880] hover:text-white mt-2">
-                  Fix Scan/Print
-                </button>
-              </Link>
-            </div>
-            <div className="flex flex-col items-center h-[90%] w-full px-4 py-2">
-              <Image
-                className="h-34"
-                src="/printer-offline.png"
-                height={250}
-                width={300}
-                alt="windows-11"
-              ></Image>
-              <h4 className=" text-2xl font-medium h-20 px-2">
-                Printer offline or print job stuck in queue?
-              </h4>
-              <p className=" text-base font-extralight py-1 h-30">
-                Use this Windows automated tool to diagnose and fix printer
-                problems such as printer offline and print jobs stuck in queue.
-              </p>
-              <Link href="/NotFound">
-                <button className="flex items-center gap-2 text-base font-light bg-black/80 text-white px-6 py-2 rounded-full hover:cursor-pointer hover:bg-[#080880] hover:text-white mt-2">
-                  Fix your Printer
-                </button>
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex justify-center relative h-screen w-full">
-          <div className="flex flex-col lg:flex-row pt-3 lg:pt-5 px-4 lg:h-2/3 bg-[#F7F7F7]">
-            <div className="flex flex-col items-center w-full md:h-2/5 h-1/2 lg:w-1/2 lg:h-full ">
-              <div className="flex gap-2 mt-8 px-8">
-                <Image
-                  src="/find-printer-icon.svg"
-                  height={150}
-                  width={150}
-                  alt="find printer icon"
-                ></Image>
-                <h2 className="text-xl md:text-3xl lg:text-4xl text-[#080880] font-extralight">
-                  Identify your printer for manuals and specific product
-                  information
-                </h2>
-              </div>
-              <div className="px-4 lg:px-0">
-                <p className="text-base lg:text-lg mt-3 mb-2 pt-4">
-                  Enter your serial number, product number or product name
-                </p>
-                <div>
-                  <form action="">
-                    <input
-                      type="text"
-                      placeholder="Example: HP DeskJet 2632 All-in-One printer"
-                      className="h-12 w-[90%] border-1 rounded-full px-4 py-2 border-black/20 outline-[#4343d8]"
-                    ></input>
-                  </form>
-                </div>
-                <a href="/InstallHPSmart">
-                  <button
-                    type="submit"
-                    className="flex items-center gap-2 text-base font-light bg-black/80 text-white px-6 py-2 rounded-full hover:cursor-pointer hover:bg-[#080880] hover:text-white mt-6 lg:mt-4"
-                  >
-                    Submit
-                  </button>
                 </a>
-              </div>
-            </div>
-            <div className="flex gap-2 items-center w-full h-2/5 lg:w-1/2 lg:h-full">
-              <div className=" border-black/20 m-5 overflow-hidden w-full h-full flex items-center justify-center">
-                <motion.div
-                  key={index}
-                  initial={{ x: 100, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: -100, opacity: 0 }}
-                  transition={{ duration: 1, ease: "easeInOut" }}
-                  className=" relative flex gap-6"
-                >
-                  <Image
-                    src={images[index]}
-                    height={450}
-                    width={550}
-                    alt={`printer-${index}`}
-                  />
-                </motion.div>
-              </div>
-            </div>
+              </li>
+              <li className="hover:text-[#004aad] cursor-pointer">
+                <a href="Troubleshoot">Troubleshoot Printer</a>
+                </li>
+              <li className="hover:text-[#004aad] cursor-pointer">About Us</li>
+              <li className="hover:text-[#004aad] cursor-pointer">
+                <a href="/Disclaimer">
+                    Disclaimer
+                </a>
+              </li>
+            </ul>
           </div>
+        </nav>
+      </header>
 
-          <div className="absolute bottom-0 md:bottom-6 lg:bottom-3 h-15 w-4/5 md:h-30 lg:h-1/4 lg:w-3/5 overflow-hidden flex items-center justify-center">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={sliderIndex}
-                initial={{ x: 100, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: -100, opacity: 0 }}
-                transition={{ duration: 1, ease: "easeInOut" }}
-                className="absolute w-full h-full"
-              >
-                <Image
-                  src={slider[sliderIndex]}
-                  height={100}
-                  width={900}
-                  alt={`slider-${sliderIndex}`}
-                  className="object-cover rounded-md"
-                />
-              </motion.div>
-            </AnimatePresence>
+      {/* Banner / Promotion */}
+      <div className="w-full h-[400px] bg-gradient-to-r from-blue-100 to-blue-50 flex items-center">
+        <div className="container mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <span className="bg-red-500 text-white px-3 py-1 text-xs font-bold rounded mb-4 inline-block">SUMMER SALE 20% OFF</span>
+            <h2 className="text-5xl font-extrabold text-[#111] mb-6 leading-tight">High-Performance <br/><span className="text-[#004aad]">Office Printers</span></h2>
+            <p className="text-gray-600 mb-8 max-w-md">Upgrade your workflow with our premium selection of Brother and HP printers. Reliable, fast, and cost-effective.</p>
+            <button className="bg-[#004aad] text-white px-8 py-4 rounded-md font-bold shadow-lg hover:bg-blue-800 transition transform hover:-translate-y-1">
+              Shop Now
+            </button>
+          </div>
+          <div className="hidden md:flex justify-center items-center">
+            {/* Illustration/Image Placeholder */}
+            <div className="w-150 h-100">
+               <img src="/hero.png" alt="Hero" className='contain' />
+            </div>
           </div>
         </div>
       </div>
-    </main>
+
+      {/* Product Section */}
+      <main className="container mx-auto px-4 py-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+          <div>
+            <h3 className="text-2xl font-black uppercase italic tracking-tighter text-[#111]">Featured Products</h3>
+            <div className="h-1 w-20 bg-[#004aad] mt-2"></div>
+          </div>
+          <div className="flex gap-4">
+             <span className="text-sm font-bold text-[#004aad] border-b-2 border-[#004aad] cursor-pointer">New Arrivals</span>
+             <span className="text-sm font-bold text-gray-400 hover:text-[#004aad] cursor-pointer">Best Sellers</span>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {products.map((product) => (
+            <div key={product.id} className="bg-white border border-gray-100 rounded-xl overflow-hidden hover:shadow-2xl transition duration-300 group relative">
+              {/* Overlay Action Buttons */}
+              <div className="absolute top-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-all flex flex-col gap-2 translate-x-4 group-hover:translate-x-0">
+                <button className="bg-white p-2 rounded-full shadow-md hover:bg-[#004aad] hover:text-white transition"><Heart className="w-4 h-4" /></button>
+                <button className="bg-white p-2 rounded-full shadow-md hover:bg-[#004aad] hover:text-white transition"><Search className="w-4 h-4" /></button>
+              </div>
+
+              <div className="aspect-square bg-[#fcfcfc] flex items-center justify-center p-6 overflow-hidden">
+                <img 
+                  src={product.image} 
+                  alt={product.name}
+                  className="object-contain w-full h-full group-hover:scale-110 transition duration-500"
+                />
+              </div>
+
+              <div className="p-5 border-t border-gray-50">
+                <div className="flex text-yellow-400 mb-2">
+                  {[...Array(5)].map((_, i) => <Star key={i} className="w-3 h-3 fill-current" />)}
+                </div>
+                <h4 className="text-[14px] font-bold mb-3 h-10 line-clamp-2 leading-tight group-hover:text-[#004aad] transition">
+                  {product.name}
+                </h4>
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-[#004aad] font-black text-lg">₹{product.price}</span>
+                  <span className="text-gray-400 line-through text-xs italic font-medium">₹{product.oldPrice}</span>
+                </div>
+                <button className="w-full border-2 border-[#004aad] text-[#004aad] py-2 rounded-lg text-xs font-black uppercase tracking-widest hover:bg-[#004aad] hover:text-white transition flex items-center justify-center gap-2">
+                  <ShoppingCart className="w-3 h-3" /> Add To Cart
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </main>
+    
+    </div>
   );
-}
+};
+
+export default LandingPage;
