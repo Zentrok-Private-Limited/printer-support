@@ -1,6 +1,20 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
 
 export default function DriverInstallation() {
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    contactNo: "",
+    modelNo: "",
+    os: "Windows",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
     <div className="min-h-screen bg-[#e6e7e8] flex flex-col relative overflow-hidden font-sans">
       {/* Header with HP Logo */}
@@ -246,6 +260,72 @@ export default function DriverInstallation() {
               </ul>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-40 mx-4 md:mx-10 border-t-4 border-[#007DBA]">
+        <div className="p-8">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-gray-800">Get Free drivers on your mail</h3>
+            <p className="text-gray-500 text-sm mt-2">Can't find the right driver? Fill out the details below and we'll send the direct download link to your inbox.</p>
+          </div>
+
+          <form className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-1">
+              <label className="text-sm font-semibold text-gray-700">Full Name</label>
+              <input 
+                type="text" name="name" placeholder="John Doe"
+                className="w-full p-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:border-[#007DBA]"
+              />
+            </div>
+
+            <div className="space-y-1">
+              <label className="text-sm font-semibold text-gray-700">Email Address</label>
+              <input 
+                type="email" name="email" placeholder="john@example.com"
+                className="w-full p-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:border-[#007DBA]"
+              />
+            </div>
+
+            <div className="space-y-1">
+              <label className="text-sm font-semibold text-gray-700">Contact No.</label>
+              <input 
+                type="tel" name="contactNo" placeholder="+1 (555) 000-0000"
+                className="w-full p-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:border-[#007DBA]"
+              />
+            </div>
+
+            <div className="space-y-1">
+              <label className="text-sm font-semibold text-gray-700">Printer Model No.</label>
+              <input 
+                type="text" name="modelNo" placeholder="e.g. HP OfficeJet Pro 9010"
+                className="w-full p-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:border-[#007DBA]"
+              />
+            </div>
+
+            <div className="md:col-span-2 space-y-1">
+              <label className="text-sm font-semibold text-gray-700">Operating System</label>
+              <div className="flex gap-4 mt-2">
+                <label className="flex items-center space-x-2 cursor-pointer">
+                  <input type="radio" name="os" value="Windows" defaultChecked className="text-[#007DBA]" />
+                  <span className="text-gray-700">Windows</span>
+                </label>
+                <label className="flex items-center space-x-2 cursor-pointer">
+                  <input type="radio" name="os" value="Mac" className="text-[#007DBA]" />
+                  <span className="text-gray-700">Mac OS</span>
+                </label>
+              </div>
+            </div>
+
+            <div className="md:col-span-2 mt-4">
+              <button 
+                type="submit"
+                className="w-full bg-[#007DBA] hover:bg-[#006699] text-white font-bold py-3 rounded-lg transition-all shadow-lg transform hover:-translate-y-1"
+              >
+                Send Me My Drivers
+              </button>
+            </div>
+          </form>
         </div>
       </div>
 

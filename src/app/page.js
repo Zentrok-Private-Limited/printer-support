@@ -3,14 +3,18 @@ import { ShoppingCart, Search, User, Menu, Star, Heart } from 'lucide-react';
 
 const LandingPage = () => {
   const products = [
-    { id: 1, name: "Brother DCP-T226 All in One Printer", price: "12,190.00", oldPrice: "14,500.00", image: "https://via.placeholder.com/300x300?text=Printer+1" },
-    { id: 2, name: "Brother Dcp-T420W Printer", price: "14,999.00", oldPrice: "16,990.00", image: "https://via.placeholder.com/300x300?text=Printer+2" },
-    { id: 3, name: "Brother DCP-T426W All in One Printer", price: "15,250.00", oldPrice: "17,500.00", image: "https://via.placeholder.com/300x300?text=Printer+3" },
-    { id: 4, name: "Brother Dcp-T520W All-in One Printer", price: "17,490.00", oldPrice: "19,990.00", image: "https://via.placeholder.com/300x300?text=Printer+4" },
-    { id: 5, name: "Brother HL-L2321D Laser Printer", price: "10,890.00", oldPrice: "12,500.00", image: "https://via.placeholder.com/300x300?text=Printer+5" },
-    { id: 6, name: "Brother HL-L2440DW Compact Digital", price: "19,990.00", oldPrice: "22,500.00", image: "https://via.placeholder.com/300x300?text=Printer+6" },
-    { id: 7, name: "HP Laserjet Pro M126nw Multi-Function", price: "21,450.00", oldPrice: "24,000.00", image: "https://via.placeholder.com/300x300?text=Printer+7" },
-    { id: 8, name: "Canon PIXMA G3012 All-in-One", price: "13,999.00", oldPrice: "15,500.00", image: "https://via.placeholder.com/300x300?text=Printer+8" },
+  { id: 1, name: "Brother DCP-T420W All-in-One Ink Tank", price: "14,999.00", oldPrice: "16,990.00", image: "/printers/Brother_T420W.webp" },
+  { id: 2, name: "Epson EcoTank L3250 Wi-Fi All-in-One", price: "15,499.00", oldPrice: "17,999.00", image: "/printers/Epson_L3250.jpg" },
+  { id: 3, name: "HP Smart Tank 580 All-in-One Wireless", price: "15,447.00", oldPrice: "18,848.00", image: "/printers/HP_580.avif" },
+  { id: 4, name: "Canon PIXMA G3012 Wireless All-in-One", price: "13,999.00", oldPrice: "15,500.00", image: "/printers/PIXMA_G3012.png" },
+  { id: 5, name: "Brother HL-L2321D Single Function Laser", price: "10,890.00", oldPrice: "12,500.00", image: "/printers/Brother_HL-L2321D.webp" },
+  { id: 6, name: "Epson EcoTank L3210 All-in-One Ink Tank", price: "12,299.00", oldPrice: "14,999.00", image: "/printers/Epson_L3210.jpg" },
+  { id: 7, name: "HP LaserJet M1005 Multi-function Laser", price: "17,000.00", oldPrice: "21,500.00", image: "/printers/HP_LaserJet_M1005.avif" },
+  { id: 8, name: "Canon PIXMA G2012 Multi-Function USB", price: "12,450.00", oldPrice: "14,200.00", image: "/printers/Canon_PIXMA_G2012.png" },
+  { id: 9, name: "Brother DCP-T820DW Auto-Duplex Wi-Fi", price: "19,450.00", oldPrice: "22,990.00", image: "/printers/DCP-T820DW.webp" },
+  { id: 10, name: "Epson EcoTank L130 Single Function Ink", price: "9,999.00", oldPrice: "11,500.00", image: "/printers/Epson_L130.png" },
+  { id: 11, name: "HP Laserjet Pro M126nw Wireless Multi", price: "21,450.00", oldPrice: "24,000.00", image: "printers/HP_Laserjet_Pro.avif" },
+  { id: 12, name: "Canon PIXMA G3730 MegaTank Wireless", price: "16,250.00", oldPrice: "18,900.00", image: "/printers/PIXMA_G3730.jpg" }
   ];
 
   return (
@@ -68,12 +72,9 @@ const LandingPage = () => {
               <li className="hover:text-[#004aad] cursor-pointer">Printers</li>
               <li className="hover:text-[#004aad] cursor-pointer">
                 <a href="/Printer-setup">
-                    Printer Setup
+                  xyz
                 </a>
               </li>
-              <li className="hover:text-[#004aad] cursor-pointer">
-                <a href="Troubleshoot">Troubleshoot Printer</a>
-                </li>
               <li className="hover:text-[#004aad] cursor-pointer">About Us</li>
               <li className="hover:text-[#004aad] cursor-pointer">
                 <a href="/Disclaimer">
@@ -112,10 +113,10 @@ const LandingPage = () => {
             <h3 className="text-2xl font-black uppercase italic tracking-tighter text-[#111]">Featured Products</h3>
             <div className="h-1 w-20 bg-[#004aad] mt-2"></div>
           </div>
-          <div className="flex gap-4">
+          {/* <div className="flex gap-4">
              <span className="text-sm font-bold text-[#004aad] border-b-2 border-[#004aad] cursor-pointer">New Arrivals</span>
              <span className="text-sm font-bold text-gray-400 hover:text-[#004aad] cursor-pointer">Best Sellers</span>
-          </div>
+          </div> */}
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
