@@ -1,6 +1,6 @@
 import React from "react";
 
-function Footer() {
+function Footer1() {
   return (
     <div>
       <div className="bg-[#DFDFDF] p-4">
@@ -136,4 +136,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default Footer1;

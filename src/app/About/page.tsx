@@ -3,21 +3,7 @@ import React from "react";
 export default function AboutUs() {
   return (
     <div className="min-h-screen bg-[#e6e7e8] font-sans">
-      {/* Header / Navigation Placeholder */}
-      <div className="w-full p-6 flex justify-between items-center bg-white shadow-sm">
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-[#007DBA] rounded-full flex items-center justify-center text-white italic font-bold text-xl">
-            hp
-          </div>
-          <span className="text-xl font-bold text-gray-800">PrinterSupport</span>
-        </div>
-        <nav className="hidden md:flex gap-6 text-gray-600 font-medium">
-          <a href="#" className="hover:text-[#007DBA]">Home</a>
-          <a href="#" className="hover:text-[#007DBA]">Drivers</a>
-          <a href="#" className="text-[#007DBA]">About Us</a>
-          <a href="#" className="hover:text-[#007DBA]">Contact</a>
-        </nav>
-      </div>
+      
 
       {/* Hero Section */}
       <div className="bg-[#007DBA] py-16 px-6 text-center text-white">
@@ -44,17 +30,14 @@ export default function AboutUs() {
             </p>
           </div>
           <div className="relative">
-            <div className="bg-white p-4 rounded-2xl shadow-2xl transform rotate-2">
+            <div className="bg-white p-4 rounded-2xl shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1512418490979-92798ccc1340?auto=format&fit=crop&q=80&w=800" 
+                src="/tech-support.jpg" 
                 alt="Printer Technology" 
                 className="rounded-lg"
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 bg-[#007DBA] text-white p-6 rounded-lg shadow-xl hidden md:block">
-              <p className="text-3xl font-bold">10k+</p>
-              <p className="text-sm">Drivers Delivered</p>
-            </div>
+            
           </div>
         </div>
 

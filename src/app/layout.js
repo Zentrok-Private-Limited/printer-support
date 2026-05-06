@@ -1,7 +1,8 @@
 import { Mulish } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
-import Footer from "@/components/footer";
+import HeaderOne from "../components/HeaderOne";
+import FooterOne from "../components/FooterOne";
 
 const mulish = Mulish({
   variable: "--font-mulish",
@@ -15,8 +16,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html name="viewport" content="width=device-width, initial-scale=1" lang="en">
+    <html lang="en">
       <head>
+        {/* Viewport Meta */}
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {/* Google Ads Script */}
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=AW-17693950882"
@@ -31,11 +36,10 @@ export default function RootLayout({ children }) {
         </Script>
       </head>
 
-      <body
-        className={`${mulish.variable}} antialiased`}
-      >
+      <body className={`${mulish.variable} antialiased`}>
+        <HeaderOne />
         {children}
-        <Footer/>
+        <FooterOne />
       </body>
     </html>
   );
