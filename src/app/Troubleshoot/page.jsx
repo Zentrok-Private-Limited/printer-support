@@ -17,7 +17,7 @@ function Troubleshoot() {
           <img src="/troubleshoot.avif" height={150} width={300} alt="" />
         </div>
         <div>
-          <h1 className='text-2xl lg:text-3xl font-semibold'>Facing problem with your printer?</h1>
+          <h1 className='text-2xl lg:text-3xl font-semibold'>Facing problem with your printer ?</h1>
           <h3 className='text-base lg:text-xl font-semi-bold py-2'>HP Virtual Agent</h3>
           <p className='text-sm lg:text-lg font-light'>Use our HP&apos;s automated Virtual Agent to try and find a resolution for your issue.</p>
           <button className='mt-6 flex items-center gap-2 text-sm lg:text-base font-light bg-black/80 text-white px-6 py-2 rounded-full hover:cursor-pointer hover:bg-[#080880] hover:text-white lg:mt-6'>Chat with Us</button>
