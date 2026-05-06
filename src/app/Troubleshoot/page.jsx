@@ -1,8 +1,8 @@
 "use client"
 import React from 'react'
 import { useState } from 'react'
-import TroubleshootNav from '@/components/TroubleshootNav.jsx'
-import Content from '@/components/Content.jsx'
+import TroubleshootNav from '../../components/TroubleshootNav.jsx'
+import Content from '../../components/Content.jsx'
 
 
 function Troubleshoot() {
