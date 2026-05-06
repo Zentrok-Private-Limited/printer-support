@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import {Star, Search } from "lucide-react";
 import { Menu, User, ShoppingCart } from "lucide-react";
+import Link from "next/link"
 
 const products = [
   { id: 1, name: "Brother DCP-T420W All-in-One Ink Tank", price: "14,999.00", oldPrice: "16,990.00", image: "/printers/Brother_T420W.webp" },
@@ -83,19 +84,19 @@ export default function PrinterStore() {
                   <div className="container mx-auto px-4">
                     <ul className="flex gap-10 text-[13px] font-bold uppercase tracking-wide py-3">
                       <li className="text-[#004aad] cursor-pointer">
-                        <a href="/">Home</a>
+                        <Link href="/">Home</Link>
                       </li>
                       <li className="hover:text-[#004aad] cursor-pointer">
-                        <a href="/Printers">Printers</a>
+                        <Link href="/Printers">Printers</Link>
                       </li>
                       <li className="hover:text-[#004aad] cursor-pointer">
-                        <a href="/PrinterSetupGuide">Printer Setup Guide</a>
+                        <Link href="/PrinterSetupGuide">Printer Setup Guide</Link>
                       </li>
                       <li className="hover:text-[#004aad] cursor-pointer">
-                        <a href="/About">About Us</a>
+                        <Link href="/About">About Us</Link>
                       </li>
                       <li className="hover:text-[#004aad] cursor-pointer">
-                        <a href="/Disclaimer">Disclaimer</a>
+                        <Link href="/Disclaimer">Disclaimer</Link>
                       </li>
                     </ul>
                   </div>

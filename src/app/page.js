@@ -1,5 +1,6 @@
 import React from 'react';
 import { ShoppingCart, Search, User, Menu, Star, Heart } from 'lucide-react';
+import Link from 'next/link';
 
 const LandingPage = () => {
   const products = [
@@ -81,19 +82,19 @@ const LandingPage = () => {
           <div className="container mx-auto px-4">
             <ul className="flex gap-10 text-[13px] font-bold uppercase tracking-wide py-3">
               <li className="text-[#004aad] cursor-pointer">
-                <a href="/">Home</a>
+                <Link href="/">Home</Link>
               </li>
               <li className="hover:text-[#004aad] cursor-pointer">
-                <a href="/Printers">Printers</a>
+                <Link href="/Printers">Printers</Link>
               </li>
               <li className="hover:text-[#004aad] cursor-pointer">
-                <a href="/PrinterSetupGuide">Printer Setup Guide</a>
+                <Link href="/PrinterSetupGuide">Printer Setup Guide</Link>
               </li>
               <li className="hover:text-[#004aad] cursor-pointer">
-                <a href="/About">About Us</a>
+                <Link href="/About">About Us</Link>
               </li>
               <li className="hover:text-[#004aad] cursor-pointer">
-                <a href="/Disclaimer">Disclaimer</a>
+                <Link href="/Disclaimer">Disclaimer</Link>
               </li>
             </ul>
           </div>
