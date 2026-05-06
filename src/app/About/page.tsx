@@ -80,12 +80,6 @@ export default function AboutUs() {
           </button>
         </div>
       </div>
-
-      {/* Simple Footer */}
-      <footer className="border-t border-gray-300 py-10 text-center text-gray-500 text-sm">
-        <p>© 2026 PrinterSupport Services. All rights reserved.</p>
-        <p className="mt-2">Not affiliated with HP Inc. All trademarks belong to their respective owners.</p>
-      </footer>
     </div>
   );
 }
