@@ -1,7 +1,7 @@
 import React from 'react'
-import HowScan from '@/components/HowScan.jsx'
-import HowPrint from '@/components/HowPrint.jsx'
-import HowFax from '@/components/HowFax.jsx'
+import HowScan from '../components/HowScan.jsx'
+import HowPrint from '../components/HowPrint.jsx'
+import HowFax from '../components/HowFax.jsx'
 
 function content({activeTab}) {
   return (
