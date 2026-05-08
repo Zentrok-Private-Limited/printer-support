@@ -1,8 +1,7 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 function PrinterSetup() {
@@ -15,100 +14,99 @@ function PrinterSetup() {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % images.length);
     }, 4000);
-
     return () => clearInterval(interval);
   }, [images.length]);
 
+  const handleSubmit = (e) => {
+    e?.preventDefault();
+    if (printerInput.trim()) {
+      router.push("/InstallHPSmart");
+    }
+  };
+
   return (
-    <div className="h-screen w-full">
-      <div className="mt-8 lg:mt-14 mx-10 lg:mx-14 flex flex-col lg:flex-row gap-4">
-        <div className="flex flex-col gap-3 px-4 py-2 lg:w-3/5 text-base font-light">
-          <h2 className="text-2xl lg:text-4xl font-extrabold">
-            We're here to help you set up your HP printer
-          </h2>
-          <p className="text-sm lg:text-lg font-light">
-            Let's connect your printer to a Wi-Fi or wired network or to a
-            computer using a USB cable, but first, we need to know your printer
-            model.
-          </p>
-        </div>
-        <div className="lg:w-2/5">
-          <Image
-            src="/PrinterSetup/Printer_Setup_Landing.webp"
-            className="rounded-xl"
-            alt="logo"
-            height={300}
-            width={500}
-          ></Image>
+    // Main Container with HP Blue Gradient
+    <div className="md:min-h-screen w-full bg-gradient-to-b from-[#007DBA] to-[#0096D6] text-white flex flex-col items-center font-sans">
+      
+      {/* Header / Logo Area */}
+      <div className="bg-white w-full flex justify-start py-2 px-4">
+        <div className="bg-[#007DBA] rounded-full w-16 h-16 flex items-center justify-center">
+           <img src="hp-icon.png" alt="logo" />
         </div>
       </div>
 
-      <div className="flex flex-col mt-8 lg:mt-0 lg:flex-row pt-6 lg:pt-5 px-4 lg:h-2/3 bg-[#F7F7F7]">
-        <div className="flex flex-col items-center justify-center w-full h-1/2 lg:w-1/2 lg:h-full ">
-          <form className="w-3/4 text-base" action="">
-            <div className="flex gap-2">
-              <input type="checkbox" id="setup" />
-              <label htmlFor="setup">Unpack, Setup New Printer</label>
-            </div>
+      {/* Main Content Card */}
+      <main className="flex-1 flex flex-col md:flex-row items-center justify-center w-full px-6 text-center">
+        
+        <div className="md:w-3/5 w-full mt-6 md:mt-0">
+          <h1 className="text-4xl md:text-5xl md:text-left font-light mb-6">
+          Set up your HP printer
+        </h1>
+        
+        <p className="text-lg md:text-xl font-light md:text-left mb-10 max-w-3xl md:max-w-2xl opacity-90">
+          Enter your HP product name and model number to get the right HP Smart software and drivers for you
+        </p>
 
-            <div className="flex gap-2">
-              <input type="checkbox" id="troubleshoot" />
-              <label htmlFor="troubleshoot">Trouleshoot Printer Issues</label>
-            </div>
-          </form>
-          <div className="px-8 lg:px-0">
-            <p className="text-base lg:text-lg mt-3 mb-2 pt-4">
-              Enter your serial number, product number or product name
-            </p>
-            <div>
-              <form action="">
-                <input
-                  type="text"
-                  value={printerInput}
-                  onChange={(e) => setPrinterInput(e.target.value)}
-                  placeholder="Example: HP DeskJet 2632 All-in-One printer"
-                  className="h-12 w-[90%] border-1 rounded-full px-4 py-2 border-black/20 outline-[#4343d8]"
+        {/* Input Group */}
+        <form onSubmit={handleSubmit} className="w-full h-22 max-w-2xl flex flex-col md:flex-row gap-3 mb-12">
+          <input
+            type="text"
+            value={printerInput}
+            onChange={(e) => setPrinterInput(e.target.value)}
+            placeholder="Enter exact model number or name. Ex: 'ENVY 452'"
+            className="flex-1 h-14 rounded-md px-6 text-black bg-white text-lg outline-none focus:ring-2 focus:ring-blue-300"
+          />
+          <button
+            type="submit"
+            disabled={!printerInput.trim()}
+            className={`h-10 md:h-14 px-10 rounded-md text-lg font-medium transition-all ${
+              printerInput.trim() 
+              ? "bg-white text-[#007DBA] hover:bg-gray-100" 
+              : "bg-white/40 text-white cursor-not-allowed"
+            }`}
+          >
+            Next
+          </button>
+        </form>
+        </div>
+
+        {/* Dynamic Image Display (Responsive Laptop/Mobile Graphic) */}
+        <div className="relative w-2/5 flex justify-center items-end ">
+          <div className="relative w-full max-w-[600px] aspect-video">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.8 }}
+                className="absolute inset-0 flex justify-center items-center"
+              >
+                {/* Simplified placeholder for the composite image in your reference */}
+                <Image
+                  src={images[index]}
+                  alt="HP Device Setup"
+                  width={500}
+                  height={350}
+                  className="object-contain drop-shadow-2xl"
+                  priority
                 />
-              </form>
-            </div>
-            <button
-              type="submit"
-              disabled={!printerInput.trim()}
-              onClick={() => {
-                if (!printerInput.trim()) return;
-                router.push("/InstallHPSmart");
-              }}
-              className={`flex items-center gap-2 text-base font-light px-6 py-2 rounded-full mt-6 lg:mt-4
-              ${
-                printerInput.trim()
-                  ? "bg-black/80 text-white hover:bg-[#080880]"
-                  : "bg-gray-400 text-gray-200 cursor-not-allowed"
-              }`}
-            >
-              Submit
-            </button>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
-        <div className="flex gap-2 items-center w-full h-2/5 lg:w-1/2 lg:h-full">
-          <div className=" border-black/20 m-5 overflow-hidden w-full h-full flex items-center justify-center">
-            <motion.div
-              key={index}
-              initial={{ x: 100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -100, opacity: 0 }}
-              transition={{ duration: 1, ease: "easeInOut" }}
-              className=" relative flex gap-6"
-            >
-              <Image
-                src={images[index]}
-                height={450}
-                width={550}
-                alt={`printer-${index}`}
-              />
-            </motion.div>
-          </div>
+
+        {/* Footer Text */}
+        
+      </main>
+      <div className="mt-8 mx-4 md:mx-0 pb-10 space-y-4 text-center">
+            <p className="text-sm md:text-base opacity-80 ">
+              Install HP Smart software and drivers on each mobile device or computer that you want to print from. Add the printer on the new device.
+            </p>
+            <p className="text-sm md:text-base">
+              Need additional help with set-up? <span className="underline cursor-pointer hover:text-gray-200">Chat with us</span>
+            </p>
         </div>
-      </div>
     </div>
   );
 }

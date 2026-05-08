@@ -1,8 +1,8 @@
 import { Mulish } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
-import HeaderOne from "../components/HeaderOne";
 import FooterOne from "../components/FooterOne";
+import { CartProvider } from "../app/context/CartContext";
 
 const mulish = Mulish({
   variable: "--font-mulish",
@@ -24,22 +24,23 @@ export default function RootLayout({ children }) {
         {/* Google Ads Script */}
         <Script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17693950882"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18146439939"
         />
         <Script id="google-ads-tag" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'AW-17693950882');
+            gtag('config', 'AW-18146439939');
           `}
         </Script>
       </head>
 
       <body className={`${mulish.variable} antialiased`}>
-        <HeaderOne />
+        <CartProvider>
         {children}
         <FooterOne />
+        </CartProvider>
       </body>
     </html>
   );

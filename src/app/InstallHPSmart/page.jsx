@@ -1,50 +1,66 @@
-"use client"
-import React from "react";
-import Image from "next/image";
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import Image from "next/image";
+import { ChevronDown, MessageCircleQuestion, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 
-
-function InstallHPSmart() {
-
-  const slider = ["/slider-1.webp", "/slider-2.webp"];
-  const [sliderIndex, setSliderIndex] = useState(0);
+const InstallHPSmart = () => {
+  const [openIndex, setOpenIndex] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
   const router = useRouter();
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSliderIndex((prev) => (prev + 1) % slider.length);
-    }, 4000);
-    
-    return () => clearInterval(interval);
-  }, [slider.length]);
-
   const handleInstallClick = () => {
     setShowPopup(true);
 
     setTimeout(() => {
       setShowPopup(false);
-      router.push("/DriverInstallation"); 
+      router.push("/DriverInstallation");
     }, 15000);
   };
 
+  const troubleshootingSteps = [
+    {
+      title: "Check and update your Windows version",
+      description:
+        "Ensure your PC is running the latest version of Windows 10 or 11. Go to Settings > Windows Update and click 'Check for updates'. HP Smart requires a modern OS to function correctly.",
+    },
+    {
+      title: "Disconnect from a VPN",
+      description:
+        "Active VPN connections can interfere with the Microsoft Store's ability to verify your location or printer network. Disconnect your VPN temporarily and try the installation again.",
+    },
+    {
+      title: "Skip Microsoft account creation",
+      description:
+        "If you are stuck on a sign-in loop, you can often skip the account sign-in during the initial Store prompt. Look for 'No thanks' or 'Install only' options to proceed without an active account.",
+    },
+    {
+      title: "Check computer time and location settings",
+      description:
+        "If your system clock or region is incorrect, the Microsoft Store may block downloads. Go to Settings > Time & Language to ensure 'Set time automatically' is toggled ON and your region matches your physical location.",
+    },
+    {
+      title: "Reset the Microsoft Store cache",
+      description:
+        "Press the Windows Key + R, type 'wsreset.exe', and press Enter. A blank command prompt will open for about 10 seconds before the Store opens automatically. This clears corrupted temporary files.",
+    },
+  ];
+
   return (
-    <div className="relative h-auto flex flex-col">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center font-sans">
       {showPopup && (
         <div className="fixed inset-0 bg-black/70 flex flex-col items-center justify-center z-50">
           <div className="bg-white rounded-xl p-8 shadow-xl flex flex-col items-center">
             <Image
-              src="/loading.gif" 
+              src="/loading.gif"
               alt="loading"
               width={80}
               height={80}
               className="mb-4"
             />
             <p className="text-lg font-light text-gray-700">
-              Installing HP Smart... Please wait
+              Installing Drivers... Please wait
             </p>
             <div className="w-64 mt-4 bg-gray-200 rounded-full h-2 overflow-hidden">
               <motion.div
@@ -58,190 +74,124 @@ function InstallHPSmart() {
         </div>
       )}
 
-      <div className="h-auto w-full bg-[#f7f7f7]">
-        <div className="h-full w-full flex flex-col lg:flex-row gap-4 lg:gap-0">
-          <div className="lg:w-2/5 flex justify-center mt-5 lg:mt-0 ">
-            <div className="flex flex-col items-center justify-center">
-              <Image
-                src="/hp-smart-app-icon.png"
-                alt="logo"
-                className="rounded-xl"
-                height={80}
-                width={80}
-              ></Image>
-              <h3 className="pt-4 text-xl lg:text-3xl">HP Smart</h3>
-              <button
-                onClick={handleInstallClick}
-                className="mt-6 text-base lg:text-xl font-light bg-black/80 text-white px-6 py-2 rounded-full hover:bg-[#080880] transition-colors"
-              >
-                Install Now
-              </button>
-              <div className="pt-4 text-sm lg:text-lg">
-                <p>Connects seamlessly with your HP printer</p>
+      <div className="w-full bg-white shadow-2xl overflow-hidden">
+        {/* Header Section */}
+        <div className="bg-[#007DBA] p-8 md:p-12 text-white">
+          <div className="mb-8">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg"
+              alt="HP Logo"
+              className="h-16 w-16 brightness-0 invert"
+            />
+          </div>
+
+          <h1 className="text-3xl md:text-5xl font-light mb-8">
+            Complete setup using HP Smart
+          </h1>
+
+          <div className="space-y-8">
+            <div className="flex gap-6">
+              <span className="text-4xl font-light opacity-80">1</span>
+              <p className="text-xl md:text-2xl pt-1">
+                Make sure that your printer is powered on
+              </p>
+            </div>
+
+            <div className="flex gap-6">
+              <span className="text-4xl font-light opacity-80">2</span>
+              <div>
+                <p className="text-xl md:text-2xl pt-1 mb-4">
+                  Install HP Printer Driver to complete setup
+                </p>
+                <button
+                  onClick={handleInstallClick}
+                  className="bg-white text-gray-700 px-6 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors mt-6"
+                >
+                  Install Printer Driver
+                </button>
               </div>
             </div>
           </div>
-          <div className="lg:w-3/5 flex justify-center px-4 lg:px-0 py-2">
-            <Image
-              src="/InstallHPSmart/hp-smart.webp"
-              className="rounded-xl"
-              alt="logo"
-              height={300}
-              width={750}
-            ></Image>
-          </div>
         </div>
 
-        <div className="mt-5 lg:mt-14 mx-14 flex flex-col lg:flex-row gap-4">
-          <div className="px-4 py-2 lg:w-3/5 text-base font-light">
-            <p className="">
-              Print, scan, and share files by using HP Smart with your HP
-              Printer. HP Smart makes it easy to get started and keeps you going
-              with features like Print Anywhere or Mobile Fax!{" "}
-              <span className="font-semibold">
-                {" "}
-                NOTE: Disconnect from a Virtual Private Network (VPN) connection
-                before downloading.
-              </span>
+        {/* Support Section */}
+        <div className="p-8 md:p-12 bg-white">
+          <div className="mb-10">
+            <p className="text-gray-600 text-sm font-semibold mb-4">
+              Also available on:
             </p>
-            <ul className="list-disc list-inside ">
-              <li className="">
-                Start with a hassle-free set up, then print, scan, copy, and
-                share files directly from your computer to your friends,
-                co-workers, or a linked cloud account{" "}
-              </li>
-              <li>
-                Manage or print to your printer using any network connection
-              </li>
-              <li>
-                Order supplies, get support, and manage your HP account straight
-                from the app
-              </li>
-              <li>
-                Create high-quality scans by importing existing files or
-                scanning from your printer, and improve them by cropping the
-                file, adding filters and text, or adjusting saturation,
-                contrast, and brightness
-              </li>
-              <li>
-                It’s easy to send secure faxes from the app with Mobile Fax
-              </li>
-              <li>
-                Be more productive with customizable one-touch Shortcuts
-                (formally Smart Tasks)
-              </li>
-              <li>
-                Access hundreds of printable crafts, cards, and learning
-                activities for free with Printables! Get involved and get your
-                family creating together!
-              </li>
-            </ul>
-            Some HP Smart features require a network connection and an HP
-            account for full functionality. Certain features/software are
-            available in English language only. <p></p>
-          </div>
-          <div className="lg:w-2/5">
-            <Image
-              src="/InstallHPSmart/app-home-page.webp"
-              className="rounded-xl"
-              alt="logo"
-              height={300}
-              width={500}
-            ></Image>
-          </div>
-        </div>
-
-        <div className="flex flex-col mt-14 items-center gap-6 h-auto w-full px-4">
-          <h2 className="text-2xl lg:text-4xl text-[#080880] font-semibold pt-5">
-            We provide solutions for
-          </h2>
-
-          <div className="text-base lg:text-lg font-extralight">
-            Storage | Software Download | Installation Issues | Network
-            Connectivity Related Issues
-          </div>
-
-          <div className="flex flex-col lg:grid lg:grid-cols-2 items-center h-3/4 w-full lg:w-320 mt-2 px-4 gap-4">
-            <div className="flex flex-col items-center h-[90%] px-8 py-2">
-              <Image
-                src="/InstallHPSmart/Support for Laptop.png"
-                className="rounded-lg"
-                height={250}
-                width={300}
-                alt="windows-11"
-              ></Image>
-              <h4 className="text-lg lg:text-2xl font-medium h-20 px-2 pt-4">
-                Get Instant Support for Laptop & Desktop
-              </h4>
-              <p className="text-sm lg:text-base font-extralight py-1 px-2 h-30">
-                If elite, premium, pavilions or any other HP desktop is not
-                working properly due to an error then connect to one of our
-                technicians at customer service number.
-              </p>
-              <Link href="/InstallHPSmart">
-                <button className="flex items-center gap-2 text-sm lg:text-base font-light bg-black/80 text-white px-6 py-2 rounded-full hover:cursor-pointer hover:bg-[#080880] hover:text-white mt-6 lg:mt-2">
-                  Call Technician
-                </button>
-              </Link>
-            </div>
-
-            <div className="flex flex-col items-center h-[90%] px-8 py-2">
-              <Image
-                src="/InstallHPSmart/Support for the Driver.png"
-                className="rounded-lg"
-                height={250}
-                width={300}
-                alt="windows-11"
-              ></Image>
-              <h4 className="text-lg lg:text-2xl font-medium h-20 px-2 pt-4">
-                Support for the Driver Download & Installation
-              </h4>
-              <p className="text-sm lg:text-base font-extralight py-1 px-2 h-30">
-                Finding and then installing the drivers for laptops, desktops,
-                and printers is a task that requires a lot of attention and
-                time. But our support services can make it so easy.
-              </p>
-              <Link href="/Troubleshoot">
-                <button className="flex items-center gap-2 text-sm lg:text-base font-light bg-black/80 text-white px-6 py-2 rounded-full hover:cursor-pointer hover:bg-[#080880] hover:text-white mt-6 lg:mt-2">
-                  Fix/Scan Print
-                </button>
-              </Link>
+            <div className="flex gap-4 flex-wrap">
+              <img
+                src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83"
+                alt="App Store"
+                className="h-10 cursor-pointer"
+              />
+              <img
+                src="/googlePlay.png"
+                alt="Google Play"
+                className="h-10 cursor-pointer"
+              />
             </div>
           </div>
-        </div>
 
-        <div className="flex justify-center lg:w-full">
-            <div className="items-center justify-center overflow-hidden">
-                <AnimatePresence mode="wait">
-                <motion.div
-                    key={sliderIndex}
-                    initial={{ x: 100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    exit={{ x: -100, opacity: 0 }}
-                    transition={{ duration: 1, ease: "easeInOut" }}
-                    className="w-[90%] lg:w-full h-full"
-                    >
-                <Image
-                    src={slider[sliderIndex]}
-                    height={100}
-                    width={1000}
-                    alt={`slider-${sliderIndex}`}
-                    className="object-cover rounded-md"
-                />
-                </motion.div>
-                </AnimatePresence>
+          {/* Troubleshooting Accordion */}
+          <div className="space-y-4">
+            <div className="flex items-start gap-4 text-[#004b71] mb-6">
+              <MessageCircleQuestion className="w-8 h-8 flex-shrink-0" />
+              <h2 className="text-2xl font-normal">
+                Troubleshooting tips for launching the Microsoft Store
+              </h2>
             </div>
-        </div>
 
-        <div className=" bg-black/80 h-20 text-white flex items-center justify-center font-light text-xs lg:text-sm mt-6 px-4 lg:px-0">
-          <p>
-            ©{new Date().getFullYear()} HP Go Wireless Setup. The information
-            contained herein is subject to change without notice.
-          </p>
+            <div className="border-t border-gray-200">
+              {troubleshootingSteps.map((step, index) => (
+                <div key={index} className="border-b border-gray-200">
+                  <button
+                    onClick={() =>
+                      setOpenIndex(openIndex === index ? null : index)
+                    }
+                    className="w-full py-5 flex justify-between items-center text-left text-gray-700 hover:text-[#007DBA] transition-colors"
+                  >
+                    <span className="text-lg font-medium">{step.title}</span>
+                    <ChevronDown
+                      className={`transform transition-transform duration-300 ${openIndex === index ? "rotate-180 text-[#007DBA]" : "text-gray-400"}`}
+                    />
+                  </button>
+
+                  {openIndex === index && (
+                    <div className="pb-6 pr-12 text-gray-600 leading-relaxed animate-in fade-in slide-in-from-top-2 duration-300">
+                      {step.description}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Footer Chat */}
+          <div className="mt-12 flex items-center gap-3 text-[#007DBA] font-medium cursor-pointer hover:underline">
+            <div className="p-2 border-2 border-[#007DBA] rounded-full">
+              <MessageCircleQuestion className="w-5 h-5" />
+            </div>
+            <p>
+              Need additional help with set-up?{" "}
+              <span className="underline">Chat with us</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Floating Action Button (Optional) */}
+      <div className="fixed bottom-8 right-8 bg-[#003366] p-4 rounded-full shadow-lg text-white cursor-pointer hover:scale-105 transition-transform">
+        <div className="relative">
+          <MessageCircleQuestion className="w-8 h-8" />
+          <span className="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full border-2 border-[#003366]">
+            1
+          </span>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default InstallHPSmart;

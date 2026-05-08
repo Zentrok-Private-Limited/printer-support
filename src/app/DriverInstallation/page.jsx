@@ -1,8 +1,8 @@
-"use client"
+"use client";
+
 import React, { useState } from "react";
 
 export default function DriverInstallation() {
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -11,46 +11,82 @@ export default function DriverInstallation() {
     os: "Windows",
   });
 
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value,
+  });
+};
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  setLoading(true);
+  setMessage("");
+
+  try {
+    const response = await fetch("/api/DriverForm", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setMessage("Driver request submitted successfully!");
+
+      setFormData({
+        name: "",
+        email: "",
+        contactNo: "",
+        modelNo: "",
+        os: "Windows",
+      });
+    } else {
+      setMessage("Submission failed.");
+    }
+  } catch (error) {
+    console.log(error);
+    setMessage("Something went wrong.");
+  }
+
+  setLoading(false);
+};
 
   return (
     <div className="min-h-screen bg-[#e6e7e8] flex flex-col relative overflow-hidden font-sans">
-      {/* Header with HP Logo */}
-
+      {/* Header */}
       <div className="w-full p-6 flex justify-between items-start">
         <div className="flex flex-col">
-          <h1 className="text-2xl font-bold text-gray-800">Installing</h1>
+          <h1 className="text-2xl font-bold text-gray-800">
+            Installing
+          </h1>
 
           <p className="text-gray-600 text-sm">
             Fatal error occurred during installation..
           </p>
         </div>
 
-        {/* Replace with your HP Logo SVG or Image */}
-
         <div className="w-16 h-16 bg-[#007DBA] rounded-full flex items-center justify-center text-white font-bold text-3xl italic">
           <img src="/hp-icon.png" alt="hp-icon" />
         </div>
       </div>
 
-      {/* Main Content Card */}
-
+      {/* Main Content */}
       <div className="flex-grow flex flex-col items-center justify-start px-4 py-10">
         <div className="max-w-2xl w-full text-center">
-          {/* Error Illustration Placeholder */}
-
           <div className="relative inline-block mb-6">
-            {/* Printer Icon Placeholder */}
-
             <div className="w-40 h-24 border-2 border-gray-400 rounded-md bg-white relative mx-auto">
               <div className="absolute bottom-0 left-4 right-4 h-1 bg-gray-300"></div>
 
               <div className="absolute -bottom-4 left-6 right-6 h-6 border border-gray-400 bg-white shadow-sm"></div>
             </div>
-
-            {/* Red Prohibited Sign */}
 
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
               <div className="w-16 h-16 border-[6px] border-red-600 rounded-full flex items-center justify-center relative">
@@ -69,23 +105,24 @@ export default function DriverInstallation() {
 
           <hr className="border-gray-400 w-64 mx-auto mb-8" />
 
-          {/* Error List */}
-
           <div className="space-y-4 text-gray-800 text-base">
             <p className="flex items-center justify-center">
               1. Network Error{" "}
-              <span className="font-semibold ml-1">0x00000709</span> : Download
-              Could Not be Completed !
+              <span className="font-semibold ml-1">
+                0x00000709
+              </span>{" "}
+              : Download Could Not be Completed !
             </p>
 
             <p className="max-w-xl mx-auto">
-              2. Printer driver installation has been failed due to error
-              <span className="font-semibold px-1">"C0000022"</span> preventing
-              product driver installation !
+              2. Printer driver installation has been failed due
+              to error
+              <span className="font-semibold px-1">
+                "C0000022"
+              </span>
+              preventing product driver installation !
             </p>
           </div>
-
-          {/* Support Button */}
 
           <button className="mt-8 bg-[#007DBA] hover:bg-[#006699] text-white text-lg py-2 px-10 rounded-lg transition-colors shadow-md">
             Live Chat Support
@@ -94,7 +131,7 @@ export default function DriverInstallation() {
       </div>
 
       {/* Troubleshooting Guide */}
-      <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-40 mx-10">
+      <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-15 mx-10">
         <div className="bg-[#007DBA] p-6 text-white text-center">
           <h3 className="text-xl font-bold">
             How to Fix HP Printer Installation Errors
@@ -263,78 +300,163 @@ export default function DriverInstallation() {
         </div>
       </div>
 
+
+      {/* FORM SECTION */}
       <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-40 mx-4 md:mx-10 border-t-4 border-[#007DBA]">
         <div className="p-8">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-gray-800">Get Free drivers on your mail</h3>
-            <p className="text-gray-500 text-sm mt-2">Can't find the right driver? Fill out the details below and we'll send the direct download link to your inbox.</p>
+            <h3 className="text-2xl font-bold text-gray-800">
+              Get Free drivers on your mail
+            </h3>
+
+            <p className="text-gray-500 text-sm mt-2">
+              Can't find the right driver? Fill out the details
+              below and we'll send the direct download link to
+              your inbox.
+            </p>
           </div>
 
-          <form className="grid md:grid-cols-2 gap-6">
+          <form
+            onSubmit={handleSubmit}
+            className="grid md:grid-cols-2 gap-6"
+          >
+            {/* NAME */}
             <div className="space-y-1">
-              <label className="text-sm font-semibold text-gray-700">Full Name</label>
-              <input 
-                type="text" name="name" placeholder="John Doe"
+              <label className="text-sm font-semibold text-gray-700">
+                Full Name
+              </label>
+
+              <input
+                type="text"
+                name="name"
+                placeholder="John Doe"
+                value={formData.name}
+                onChange={handleChange}
+                required
                 className="w-full p-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:border-[#007DBA]"
               />
             </div>
 
+            {/* EMAIL */}
             <div className="space-y-1">
-              <label className="text-sm font-semibold text-gray-700">Email Address</label>
-              <input 
-                type="email" name="email" placeholder="john@example.com"
+              <label className="text-sm font-semibold text-gray-700">
+                Email Address
+              </label>
+
+              <input
+                type="email"
+                name="email"
+                placeholder="john@example.com"
+                value={formData.email}
+                onChange={handleChange}
+                required
                 className="w-full p-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:border-[#007DBA]"
               />
             </div>
 
+            {/* CONTACT */}
             <div className="space-y-1">
-              <label className="text-sm font-semibold text-gray-700">Contact No.</label>
-              <input 
-                type="tel" name="contactNo" placeholder="+1 (555) 000-0000"
+              <label className="text-sm font-semibold text-gray-700">
+                Contact No.
+              </label>
+
+              <input
+                type="tel"
+                name="contactNo"
+                placeholder="+1 (555) 000-0000"
+                value={formData.contactNo}
+                onChange={handleChange}
+                required
                 className="w-full p-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:border-[#007DBA]"
               />
             </div>
 
+            {/* MODEL */}
             <div className="space-y-1">
-              <label className="text-sm font-semibold text-gray-700">Printer Model No.</label>
-              <input 
-                type="text" name="modelNo" placeholder="e.g. HP OfficeJet Pro 9010"
+              <label className="text-sm font-semibold text-gray-700">
+                Printer Model No.
+              </label>
+
+              <input
+                type="text"
+                name="modelNo"
+                placeholder="e.g. HP OfficeJet Pro 9010"
+                value={formData.modelNo}
+                onChange={handleChange}
+                required
                 className="w-full p-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:border-[#007DBA]"
               />
             </div>
 
+            {/* OS */}
             <div className="md:col-span-2 space-y-1">
-              <label className="text-sm font-semibold text-gray-700">Operating System</label>
+              <label className="text-sm font-semibold text-gray-700">
+                Operating System
+              </label>
+
               <div className="flex gap-4 mt-2">
                 <label className="flex items-center space-x-2 cursor-pointer">
-                  <input type="radio" name="os" value="Windows" defaultChecked className="text-[#007DBA]" />
-                  <span className="text-gray-700">Windows</span>
+                  <input
+                    type="radio"
+                    name="os"
+                    value="Windows"
+                    checked={formData.os === "Windows"}
+                    onChange={handleChange}
+                  />
+
+                  <span className="text-gray-700">
+                    Windows
+                  </span>
                 </label>
+
                 <label className="flex items-center space-x-2 cursor-pointer">
-                  <input type="radio" name="os" value="Mac" className="text-[#007DBA]" />
-                  <span className="text-gray-700">Mac OS</span>
+                  <input
+                    type="radio"
+                    name="os"
+                    value="Mac"
+                    checked={formData.os === "Mac"}
+                    onChange={handleChange}
+                  />
+
+                  <span className="text-gray-700">
+                    Mac OS
+                  </span>
                 </label>
               </div>
             </div>
 
+            {/* BUTTON */}
             <div className="md:col-span-2 mt-4">
-              <button 
+              <button
                 type="submit"
-                className="w-full bg-[#007DBA] hover:bg-[#006699] text-white font-bold py-3 rounded-lg transition-all shadow-lg transform hover:-translate-y-1"
+                disabled={loading}
+                className="w-full bg-[#007DBA] hover:bg-[#006699] text-white font-bold py-3 rounded-lg transition-all shadow-lg transform hover:-translate-y-1 disabled:opacity-50"
               >
-                Send Me My Drivers
+                {loading
+                  ? "Submitting..."
+                  : "Send Me My Drivers"}
               </button>
             </div>
+
+            {/* MESSAGE */}
+            {message && (
+              <div className="md:col-span-2 text-center">
+                <p className="text-green-600 font-medium">
+                  {message}
+                </p>
+              </div>
+            )}
           </form>
         </div>
       </div>
 
-      {/* Blue Slanted Footer Overlay */}
-
+      {/* Footer Overlay */}
       <div className="hidden md:flex absolute bottom-0 left-0 w-full h-32 pointer-events-none">
         <div
           className="absolute bottom-0 left-0 w-full h-full bg-[#007DBA]"
-          style={{ clipPath: "polygon(0 0%, 100% 100%, 0 100%)" }}
+          style={{
+            clipPath: "polygon(0 0%, 100% 100%, 0 100%)",
+          }}
         >
           <div className="absolute bottom-4 left-6 text-white/40 font-bold text-5xl italic border-4 border-white/40 rounded-full w-20 h-20 flex items-center justify-center">
             <img src="/hp-icon.png" alt="hp-icon" />
