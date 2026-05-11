@@ -76,119 +76,123 @@ const InstallHPSmart = () => {
 
       <div className="w-full bg-white shadow-2xl overflow-hidden">
         {/* Header Section */}
-        <div className="bg-[#007DBA] p-8 md:p-12 text-white">
-          <div className="mb-8">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/a/ad/HP_logo_2012.svg"
-              alt="HP Logo"
-              className="h-16 w-16 brightness-0 invert"
-            />
-          </div>
+        <div className="h-[511px] relative p-8 md:p-12 text-white overflow-hidden">
+          {/* Desktop Background */}
+          <div
+            className="absolute inset-0 hidden md:block bg-cover bg-no-repeat"
+            style={{
+              backgroundImage: "url('/bg-img.png')",
+            }}
+          />
 
-          <h1 className="text-3xl md:text-5xl font-light mb-8">
-            Complete setup using HP Smart
-          </h1>
+          {/* Mobile Background */}
+          <div
+            className="absolute inset-0 block md:hidden bg-cover bg-no-repeat"
+            style={{
+              backgroundImage: "url('/bg-mb.png')",
+            }}
+          />
 
-          <div className="space-y-8">
-            <div className="flex gap-6">
-              <span className="text-4xl font-light opacity-80">1</span>
-              <p className="text-xl md:text-2xl pt-1">
-                Make sure that your printer is powered on
-              </p>
-            </div>
+          {/* Content */}
+          <div className="relative z-10">
+            <h1 className="text-xl md:text-5xl font-light mb-4 md:mb-8">
+              Complete setup using HP Smart
+            </h1>
 
-            <div className="flex gap-6">
-              <span className="text-4xl font-light opacity-80">2</span>
-              <div>
-                <p className="text-xl md:text-2xl pt-1 mb-4">
-                  Install HP Printer Driver to complete setup
+            <div className="space-y-4 md:space-y-8">
+              <div className="flex gap-4 md:gap-6">
+                <span className="text-lg md:text-4xl font-light opacity-80">
+                  1
+                </span>
+                <p className="text-base md:text-2xl pt-1">
+                  Make sure that your printer is powered on
                 </p>
-                <button
-                  onClick={handleInstallClick}
-                  className="bg-white text-gray-700 px-6 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors mt-6"
-                >
-                  Install Printer Driver
-                </button>
+              </div>
+
+              <div className="flex gap-4 md:gap-6">
+                <span className="text-lg md:text-4xl font-light opacity-80">
+                  2
+                </span>
+                <div>
+                  <p className="text-base md:text-2xl pt-1 mb-4">
+                    Install HP Printer Driver to complete setup
+                  </p>
+                  <button
+                    onClick={handleInstallClick}
+                    className="bg-black text-white md:bg-white md:text-gray-700 px-6 py-2 rounded-md font-medium hover:bg-gray-100 transition-colors mt-1 lg:mt-6"
+                  >
+                    Install Printer Driver
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Support Section */}
         <div className="p-8 md:p-12 bg-white">
-          <div className="mb-10">
-            <p className="text-gray-600 text-sm font-semibold mb-4">
-              Also available on:
-            </p>
-            <div className="flex gap-4 flex-wrap">
-              <img
-                src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83"
-                alt="App Store"
-                className="h-10 cursor-pointer"
-              />
-              <img
-                src="/googlePlay.png"
-                alt="Google Play"
-                className="h-10 cursor-pointer"
-              />
+            <div className="mb-10">
+              <p className="text-gray-600 text-sm font-semibold mb-4">
+                Also available on:
+              </p>
+              <div className="flex gap-4 flex-wrap">
+                <img
+                  src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83"
+                  alt="App Store"
+                  className="h-10 cursor-pointer"
+                />
+                <img
+                  src="/googleplay.svg"
+                  alt="Google Play"
+                  className="h-10 cursor-pointer"
+                />
+              </div>
+            </div>
+
+            {/* Troubleshooting Accordion */}
+            <div className="space-y-4">
+              <div className="flex items-start gap-4 text-[#004b71] mb-6">
+                <MessageCircleQuestion className="w-8 h-8 flex-shrink-0" />
+                <h2 className="text-2xl font-normal">
+                  Troubleshooting tips for launching the Microsoft Store
+                </h2>
+              </div>
+
+              <div className="border-t border-gray-200">
+                {troubleshootingSteps.map((step, index) => (
+                  <div key={index} className="border-b border-gray-200">
+                    <button
+                      onClick={() =>
+                        setOpenIndex(openIndex === index ? null : index)
+                      }
+                      className="w-full py-5 flex justify-between items-center text-left text-gray-700 hover:text-[#007DBA] transition-colors"
+                    >
+                      <span className="text-lg font-medium">{step.title}</span>
+                      <ChevronDown
+                        className={`transform transition-transform duration-300 ${openIndex === index ? "rotate-180 text-[#007DBA]" : "text-gray-400"}`}
+                      />
+                    </button>
+
+                    {openIndex === index && (
+                      <div className="pb-6 pr-12 text-gray-600 leading-relaxed animate-in fade-in slide-in-from-top-2 duration-300">
+                        {step.description}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Footer Chat */}
+            <div className="mt-12 flex items-center gap-3 text-[#007DBA] font-medium cursor-pointer hover:underline">
+              <div className="p-2 border-2 border-[#007DBA] rounded-full">
+                <MessageCircleQuestion className="w-5 h-5" />
+              </div>
+              <p>
+                Need additional help with set-up?{" "}
+                <span className="underline">Chat with us</span>
+              </p>
             </div>
           </div>
-
-          {/* Troubleshooting Accordion */}
-          <div className="space-y-4">
-            <div className="flex items-start gap-4 text-[#004b71] mb-6">
-              <MessageCircleQuestion className="w-8 h-8 flex-shrink-0" />
-              <h2 className="text-2xl font-normal">
-                Troubleshooting tips for launching the Microsoft Store
-              </h2>
-            </div>
-
-            <div className="border-t border-gray-200">
-              {troubleshootingSteps.map((step, index) => (
-                <div key={index} className="border-b border-gray-200">
-                  <button
-                    onClick={() =>
-                      setOpenIndex(openIndex === index ? null : index)
-                    }
-                    className="w-full py-5 flex justify-between items-center text-left text-gray-700 hover:text-[#007DBA] transition-colors"
-                  >
-                    <span className="text-lg font-medium">{step.title}</span>
-                    <ChevronDown
-                      className={`transform transition-transform duration-300 ${openIndex === index ? "rotate-180 text-[#007DBA]" : "text-gray-400"}`}
-                    />
-                  </button>
-
-                  {openIndex === index && (
-                    <div className="pb-6 pr-12 text-gray-600 leading-relaxed animate-in fade-in slide-in-from-top-2 duration-300">
-                      {step.description}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Footer Chat */}
-          <div className="mt-12 flex items-center gap-3 text-[#007DBA] font-medium cursor-pointer hover:underline">
-            <div className="p-2 border-2 border-[#007DBA] rounded-full">
-              <MessageCircleQuestion className="w-5 h-5" />
-            </div>
-            <p>
-              Need additional help with set-up?{" "}
-              <span className="underline">Chat with us</span>
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Floating Action Button (Optional) */}
-      <div className="fixed bottom-8 right-8 bg-[#003366] p-4 rounded-full shadow-lg text-white cursor-pointer hover:scale-105 transition-transform">
-        <div className="relative">
-          <MessageCircleQuestion className="w-8 h-8" />
-          <span className="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full border-2 border-[#003366]">
-            1
-          </span>
-        </div>
       </div>
     </div>
   );

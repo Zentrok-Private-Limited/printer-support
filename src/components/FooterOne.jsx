@@ -50,7 +50,7 @@ function Footer1() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="/FixOfflinePrinter"
+                  href="/Setup"
                   className="hover:text-white transition"
                 >
                   Printer Offline
@@ -62,7 +62,7 @@ function Footer1() {
                 </a>
               </li>
               <li>
-                <a href="/ScannerSetUp" className="hover:text-white transition">
+                <a href="/Setup" className="hover:text-white transition">
                   Scanner Setup
                 </a>
               </li>

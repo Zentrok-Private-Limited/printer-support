@@ -1,5 +1,5 @@
 "use client"
-import React from "react";
+import React, { useState } from "react";
 import {
   ChevronRight,
   Printer,
@@ -7,7 +7,7 @@ import {
   Download,
   CheckCircle,
 } from "lucide-react";
-import { ShoppingCart, Search, User, Menu, Star, Heart } from "lucide-react";
+import { ShoppingCart, Search, User, Menu, Star, Heart, X } from "lucide-react";
 import Link from "next/link";
 import { useCart } from "../context/CartContext";
 export default function PrinterSetupGuide() {
@@ -58,87 +58,171 @@ export default function PrinterSetupGuide() {
     },
   ];
   const { cart } = useCart();
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   return (
     <>
       <header className="bg-white border-b sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
+      {/* Top Header */}
+      <div className="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
+        
+        {/* Logo + Hamburger */}
+        <div className="flex items-center gap-3">
+          
+          {/* Hamburger */}
+          <button
+            onClick={() => setMobileMenu(!mobileMenu)}
+            className="lg:hidden"
+          >
+            {mobileMenu ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
+          </button>
+
           {/* Logo */}
-          <div className="flex items-center gap-3">
-            <Menu className="lg:hidden w-6 h-6 cursor-pointer" />
-            <div className="flex flex-col leading-tight">
-              <span className="text-2xl font-black text-[#004aad] tracking-tighter uppercase italic">
-                Printer Drivers Support
-              </span>
-              <span className="text-[10px] font-bold text-gray-500 tracking-widest uppercase ml-1">
-                Pro Digital Services
-              </span>
-            </div>
-          </div>
-
-          {/* Search Bar */}
-          <div className="flex-1 max-w-xl hidden md:flex border rounded-md overflow-hidden bg-gray-50">
-            <input
-              type="text"
-              placeholder="Search for printers, ink, cartridges..."
-              className="flex-grow px-4 py-2 outline-none bg-transparent text-sm"
+          <Link href="/" className="flex items-center w-40 h-12">
+            <img
+              src="/logo.png"
+              alt="logo"
+              className="w-full h-full object-contain"
             />
-            <button className="bg-[#004aad] px-5 flex items-center justify-center text-white">
-              <Search className="w-4 h-4" />
-            </button>
-          </div>
-
-          {/* Icons */}
-          <div className="flex items-center gap-6">
-            <div className="hidden lg:flex flex-col text-right">
-              <span className="text-[10px] text-gray-400 font-bold uppercase">
-                Call Us Now
-              </span>
-              <span className="text-sm font-bold text-[#004aad]">
-                +91-877-230-1112
-              </span>
-            </div>
-
-            <div className="relative cursor-pointer group">
-              <User className="w-6 h-6 group-hover:text-[#004aad]" />
-            </div>
-
-            <div className="flex items-center gap-6">
-              <div className="relative cursor-pointer group">
-                <Link href="/Cart" className="flex items-center">
-                  <ShoppingCart className="w-6 h-6 group-hover:text-[#004aad]" />
-                  <span className="absolute -top-2 -right-2 bg-[#ff4d4d] text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-bold">
-                    {cart.length}
-                  </span>
-                </Link>
-              </div>
-            </div>
-          </div>
+          </Link>
         </div>
 
-        {/* Navigation */}
-        <nav className="bg-white border-t hidden lg:block">
-          <div className="container mx-auto px-4">
-            <ul className="flex gap-10 text-[13px] font-bold uppercase tracking-wide py-3">
-              <li className="text-[#004aad] cursor-pointer">
-                <Link href="/">Home</Link>
-              </li>
-              <li className="hover:text-[#004aad] cursor-pointer">
-                <Link href="/Printers">Printers</Link>
-              </li>
-              <li className="hover:text-[#004aad] cursor-pointer">
-                <Link href="/PrinterSetupGuide">Printer Setup Guide</Link>
-              </li>
-              <li className="hover:text-[#004aad] cursor-pointer">
-                <Link href="/About">About Us</Link>
-              </li>
-              <li className="hover:text-[#004aad] cursor-pointer">
-                <Link href="/Disclaimer">Disclaimer</Link>
-              </li>
-            </ul>
+        {/* Search Bar */}
+        <div className="flex-1 max-w-xl hidden md:flex border rounded-md overflow-hidden bg-gray-50">
+          <input
+            type="text"
+            placeholder="Search for printers, ink, cartridges..."
+            className="flex-grow px-4 py-2 outline-none bg-transparent text-sm"
+          />
+
+          <button className="bg-[#004aad] px-5 flex items-center justify-center text-white">
+            <Search className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* Right Side */}
+        <div className="flex items-center gap-6">
+          
+          {/* Phone */}
+          <div className="hidden lg:flex flex-col text-right">
+            <span className="text-[10px] text-gray-400 font-bold uppercase">
+              Call Us Now
+            </span>
+
+            <span className="text-sm font-bold text-[#004aad]">
+              +91-877-230-1112
+            </span>
           </div>
-        </nav>
-      </header>
+
+          {/* User */}
+          <div className="relative cursor-pointer group">
+            <User className="w-6 h-6 group-hover:text-[#004aad]" />
+          </div>
+
+          {/* Cart */}
+          <div className="relative cursor-pointer group">
+            <Link href="/Cart" className="flex items-center">
+              <ShoppingCart className="w-6 h-6 group-hover:text-[#004aad]" />
+
+              <span className="absolute -top-2 -right-2 bg-[#ff4d4d] text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-bold">
+                {cart.length}
+              </span>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop Navigation */}
+      <nav className="bg-white border-t hidden lg:block">
+        <div className="container mx-auto px-4">
+          <ul className="flex gap-10 text-[13px] font-bold uppercase tracking-wide py-3">
+            <li className="text-[#004aad] cursor-pointer">
+              <Link href="/">Home</Link>
+            </li>
+
+            <li className="hover:text-[#004aad] cursor-pointer">
+              <Link href="/Printers">Printers</Link>
+            </li>
+
+            <li className="hover:text-[#004aad] cursor-pointer">
+              <Link href="/PrinterSetupGuide">
+                Printer Setup Guide
+              </Link>
+            </li>
+
+            <li className="hover:text-[#004aad] cursor-pointer">
+              <Link href="/About">About Us</Link>
+            </li>
+
+            <li className="hover:text-[#004aad] cursor-pointer">
+              <Link href="/Disclaimer">Disclaimer</Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      {/* Mobile Navigation */}
+      {mobileMenu && (
+        <div className="lg:hidden bg-white border-t shadow-md">
+          <ul className="flex flex-col text-sm font-semibold uppercase">
+            
+            <li className="border-b">
+              <Link
+                href="/"
+                className="block px-4 py-4 hover:bg-gray-100"
+                onClick={() => setMobileMenu(false)}
+              >
+                Home
+              </Link>
+            </li>
+
+            <li className="border-b">
+              <Link
+                href="/Printers"
+                className="block px-4 py-4 hover:bg-gray-100"
+                onClick={() => setMobileMenu(false)}
+              >
+                Printers
+              </Link>
+            </li>
+
+            <li className="border-b">
+              <Link
+                href="/PrinterSetupGuide"
+                className="block px-4 py-4 hover:bg-gray-100"
+                onClick={() => setMobileMenu(false)}
+              >
+                Printer Setup Guide
+              </Link>
+            </li>
+
+            <li className="border-b">
+              <Link
+                href="/About"
+                className="block px-4 py-4 hover:bg-gray-100"
+                onClick={() => setMobileMenu(false)}
+              >
+                About Us
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                href="/Disclaimer"
+                className="block px-4 py-4 hover:bg-gray-100"
+                onClick={() => setMobileMenu(false)}
+              >
+                Disclaimer
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )}
+    </header>
 
       <div className="min-h-screen bg-gray-50 font-sans pb-20">
         {/* Hero Header */}
