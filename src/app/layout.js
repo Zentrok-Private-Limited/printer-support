@@ -1,7 +1,6 @@
 import { Mulish } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
-import FooterOne from "../components/FooterOne";
 import { CartProvider } from "../app/context/CartContext";
 
 const mulish = Mulish({
@@ -39,7 +38,6 @@ export default function RootLayout({ children }) {
       <body className={`${mulish.variable} antialiased`}>
         <CartProvider>
         {children}
-        <FooterOne />
         </CartProvider>
       </body>
     </html>
