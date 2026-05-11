@@ -26,7 +26,7 @@ export default function CookiePopup() {
   if (!showPopup) return null;
 
   return (
-    <div className="fixed bottom-5 left-1/2 z-50 w-[95%] max-w-md -translate-x-1/2 rounded-md border border-gray-200 bg-white p-5 shadow-2xl">
+    <div className="fixed bottom-5 left-0 z-50 w-[95%] max-w-md -translate-x-1/2 rounded-md border border-gray-200 bg-white p-5 shadow-2xl">
       
       {/* Close Button */}
       <button
