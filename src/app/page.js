@@ -381,7 +381,7 @@ const LandingPage = () => {
         models before downloading any drivers or software. We are not
         responsible for any issues that may arise from the use of information or
         tools provided on this website. For official manufacturer support,
-        please visit the manufacturer's official website.
+        please visit the manufacturer&apos;s official website.
         <br />
         By using this website and its services, you acknowledge that you have
         read, understood, and agreed to this disclaimer. If you do not agree
