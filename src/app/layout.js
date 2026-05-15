@@ -9,8 +9,53 @@ const mulish = Mulish({
 });
 
 export const metadata = {
-  title: "Printer Drivers Support",
-  description: "Printer Support",
+  metadataBase: new URL("https://yourdomain.com"),
+
+  title: {
+    default: "Printer Drivers Support | Setup, Installation & Troubleshooting",
+    template: "%s | Printer Drivers Support",
+  },
+
+  description:
+    "Get expert help for printer driver installation, wireless printer setup, offline printer issues, scanning problems, and troubleshooting for HP, Canon, Epson, and Brother printers.",
+
+  keywords: [
+    "printer driver support",
+    "printer setup",
+    "printer troubleshooting",
+    "HP printer support",
+    "Canon printer setup",
+    "Brother printer help",
+    "Epson printer troubleshooting",
+    "wireless printer setup",
+    "printer offline fix",
+    "printer driver installation",
+  ],
+
+  alternates: {
+    canonical: "https://www.printerdriverssupport.com/",
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  openGraph: {
+    title: "Printer Drivers Support",
+    description:
+      "Printer setup, driver installation, troubleshooting, and wireless printer support.",
+    url: "https://www.printerdriverssupport.com/",
+    siteName: "Printer Drivers Support",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Printer Drivers Support",
+    description:
+      "Printer setup and troubleshooting support for HP, Canon, Epson, and Brother printers.",
+  },
 };
 
 export default function RootLayout({ children }) {
